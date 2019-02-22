@@ -89,17 +89,17 @@ WSGI_APPLICATION = 'Oryx.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        # 'NAME': os.path.join(BASE_DIR, 'OryxDB'),
-        'NAME': 'oryxdb',
-        'USER' : 'root',
-        'PASSWORD': '#@Ineedaxessmysql12@#',
-        'HOST': '127.0.0.1',
-        'PORT': '3306',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         # 'NAME': os.path.join(BASE_DIR, 'OryxDB'),
+#         'NAME': 'oryxdb',
+#         'USER' : 'root',
+#         'PASSWORD': '#@Ineedaxessmysql12@#',
+#         'HOST': '127.0.0.1',
+#         'PORT': '3306',
+#     }
+# }
 
 
 # Password validation
@@ -153,3 +153,8 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+import dj_database_url
+db_from_env = dj_database_url.config(conn_max_age=500)
+DATABASES = {'default': dj_database_url.config(conn_max_age=500)}
+DATABASES['default'].update(db_from_env)
