@@ -49,6 +49,11 @@ def LoginView(request):
                         userinfo_object.save()
                         
                     return HttpResponseRedirect(reverse('home:home',))
+                
+                else:
+                    error = "Wrong username or Password"
+                    return render(request, 'login.html', {'error': error})    
+                    
                 error = "Wrong username or Password"
                 return render(request, 'login.html', {'error': error})
         
