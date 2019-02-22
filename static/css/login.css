@@ -1,0 +1,56 @@
+body,
+html {
+    background-color: #282E34;
+    height: 100%;
+    width: 100%;
+}
+
+.full-container {
+    height: 100%;
+    width: 100%;
+}
+
+.intro-container {
+    color: white;
+}
+
+.container-row {
+    padding: 40px;
+}
+
+.intro {
+    font-family: 'Pacifico', cursive;
+    letter-spacing: 5px;
+    font-size: 48pt;
+}
+
+.main-container {
+    max-width: 320px;
+    background: whitesmoke;
+    border-radius: 20px;
+    box-shadow: 20px 20px 20px;
+}
+
+.login-form {
+    padding: 10px 0px 30px 0px;
+    border-radius: 20px;
+}
+
+.heading-row {
+    padding-top: 20px;
+    font-family: 'Chela One', cursive;
+    letter-spacing: 10px;
+}
+
+.field-rows {
+    padding: 5px 10px 10px 5px;
+    font-weight: 600;
+}
+
+.button-row {
+    padding: 15px 0px 2px 0px;
+}
+
+.error-row {
+    color: red;
+}

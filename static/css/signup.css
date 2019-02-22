@@ -1,0 +1,106 @@
+body,
+html {
+    background-color: #282E34;
+    height: 100%;
+    width: 100%;
+}
+
+.full-container {
+    height: 100%;
+    width: 100%;
+}
+
+.container-row {
+    padding: 20px;
+    color: white;
+}
+
+.intro {
+    font-family: 'Pacifico', cursive;
+    letter-spacing: 5px;
+    font-size: 48pt;
+}
+
+.main-container {
+    max-width: 320px;
+    background: whitesmoke;
+    border-radius: 20px;
+    box-shadow: 20px 20px 20px;
+}
+
+.left-column-heading {
+    color: white;
+    font-weight: 600;
+}
+
+.smartphone-image {
+    width: 150px;
+    height: 150px;
+}
+
+.smartphones-name,
+.smartphones-ratings {
+    color: white;
+    font-size: 600;
+    text-transform: capitalize;
+}
+
+.rating-labels {
+    padding: 1px 4px 1px 4px;
+    border-radius: 5px;
+}
+
+.images-row {
+    padding: 10px;
+}
+
+.signup-form {
+    padding: 10px 0px 30px 0px;
+    border-radius: 20px;
+}
+
+.heading-row {
+    padding-top: 20px;
+    font-family: 'Chela One', cursive;
+    letter-spacing: 10px;
+}
+
+.field-rows {
+    padding: 20px 10px 10px 20px;
+    font-weight: 600;
+}
+
+.textfield {
+    text-align: center;
+}
+
+.button-row {
+    padding: 15px 0px 5px 0px;
+}
+
+.errors {
+    padding-bottom: 0px;
+    color: red;
+    list-style: none;
+    border-radius: 5px;
+}
+
+.col-form-label {
+    visibility: hidden;
+}
+
+@media screen and (max-width: 500px) {
+    .col-form-label {
+        visibility: hidden;
+    }
+    .field-rows {
+        padding: 6px;
+    }
+    .carousel-column {
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+    .left-column {
+        display: none;
+    }
+}

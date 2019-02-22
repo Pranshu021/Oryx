@@ -1,0 +1,77 @@
+body {
+    background-color: rgb(40, 46, 52);
+    width: 100%;
+}
+
+.search-people {
+    position: absolute;
+    right: 20px;
+}
+
+.profile-image {
+    height: 250px;
+    width: 200px;
+    border-radius: 50%;
+}
+
+.icon-image {
+    font-size: 72pt;
+    color: white;
+    border: 3px solid white;
+    border-radius: 50%;
+    padding: 20px;
+}
+
+.info-intro {
+    color: lightgray;
+    font-size: 18pt;
+    letter-spacing: 3px;
+}
+
+.text {
+    color: gray;
+    font-size: 14pt;
+    font-family: 'Patrick Hand', cursive;
+}
+
+.info-text {
+    color: white;
+    text-transform: capitalize;
+}
+
+.empty-text {
+    color: gray;
+    text-transform: capitalize;
+}
+
+.comments-heading {
+    color: white;
+}
+
+.profile-image-column {
+    width: 300px;
+}
+
+.profile-pic {
+    width: 100%;
+}
+
+.products-name {
+    text-transform: uppercase;
+}
+
+.remove-pic-form {
+    display: none;
+}
+
+@media screen and (max-width: 768px) {
+    .info-text {
+        word-wrap: break-word;
+    }
+    .profile-pic {
+        width: 100%;
+    }
+    .upload-row {
+        padding: 0px;
+    }
+}

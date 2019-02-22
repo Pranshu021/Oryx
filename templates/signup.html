@@ -1,0 +1,121 @@
+{% extends 'base.html' %} {% load staticfiles %} {% block title %} Oryx &nbsp; | &nbsp; Sign Up {% endblock title %} {% block head %}
+<link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Chela+One" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'css/signup.css' %}">
+<script>
+</script>
+
+{% endblock head %} {% block brand-icon %}
+<a href="{% url 'index' %}" class="navbar-brand"><img src="{% static 'OryxLogo2.png' %}" class="logo" width=27 height=27>
+</a>
+{% endblock brand-icon %} {% block body %}
+<div class="container-fluid full-container">
+    <div class="row container-row">
+        <div class="col-lg-12 container-column">
+            <h1 class="text-center intro">Oryx</h1>
+        </div>
+    </div>
+
+    <div class="row main-row">
+        <div class="col-lg-6 col-sm-12 col-xs-12 col-md-6 left-column">
+            <h1 class="text-center left-column-heading">Top 4 Smartphones</h1>
+            <div class="row text-center images-row">
+
+                {% for i in top_two %}
+                <div class="col-lg-6 col-sm-12 col-xs-12">
+                    <img src="{{ i.image.url }}" alt="Number One Smartphone" class="smartphone-image"><br>
+                    <span class="smartphones-name">{{ i.name }}</span><br>
+                    <span class="smartphones-ratings">Ratings : </span><span class="btn-danger rating-labels">{{ i.total_ratings }}</span>
+                </div>
+                {% endfor %}
+
+                <!-- <div class="col-lg-6">
+                    <img src="{{ best.image.url }}" alt="Number One Smartphone" class="smartphone-image">
+                </div>
+                <div class="col-lg-6">
+                    <img src="{{ best.image.url }}" alt="Number One Smartphone" class="smartphone-image">
+                </div> -->
+            </div>
+            <div class="row text-center images-row">
+
+                {% for i in top_four %}
+                <div class="col-lg-6">
+                    <img src="{{ i.image.url }}" alt="Number One Smartphone" class="smartphone-image"><br>
+                    <span class="smartphones-name">{{ i.name }}</span><br>
+                    <span class="smartphones-ratings">Ratings : </span><span class="btn-danger rating-labels">{{ i.total_ratings }}</span>
+
+                </div>
+                {% endfor %}
+
+
+                <!-- <div class="col-lg-6">
+                    <img src="{{ best.image.url }}" alt="Number One Smartphone" class="smartphone-image">
+                </div> -->
+            </div>
+        </div>
+
+        <div class="col-lg-6 col-sm-12 col-xs-12">
+            <div class="container main-container text-center">
+                <div class="row heading-row">
+                    <div class="col-lg-12 col-sm-12">
+                        <h3 class="heading">Sign Up</h3>
+                    </div>
+                </div>
+                <form action="." method="POST" class="signup-form form-group">
+                    {% csrf_token %} {% if form.errors %}
+                    <div class="row errors-row">
+                        <div class="col-lg-12 errors-column text-center">
+                            {% if form.username.errors %}
+                            <div class="errors alert-danger">{{ form.username.errors }}</div>
+                            {% endif %} {% if form.email.errors %}
+                            <div class="errors alert-danger">{{ form.email.errors }}</div>
+                            {% endif %} {% if form.password.errors %}
+                            <div class="errors alert-danger">{{ form.password.errors }}</div>
+                            {% endif %} {% if form.confirm_password.errors %}
+                            <div class="errors alert-danger">{{ form.confirm_password.errors }}</div>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    {% endif %}
+
+                    <div class="row field-rows">
+
+                        <div class="col-lg-12 col-sm-12">
+                            {{ form.username }}
+                        </div>
+                    </div>
+                    <div class="row error-row">
+                    </div>
+
+                    <div class="row field-rows">
+                        <div class="col-lg-12 col-sm-12">
+                            {{ form.email }}
+                        </div>
+                    </div>
+                    <div class="row error-row">
+                    </div>
+
+
+                    <div class="row field-rows">
+                        <div class="col-lg-12 col-sm-12">
+                            {{ form.password }}
+                        </div>
+                    </div>
+                    <div class="row field-rows">
+                        <div class="col-lg-12 col-sm-12">
+                            {{ form.confirm_password }}
+                        </div>
+                    </div>
+                    <div class="row button-row">
+                        <div class="col-lg-12 col-sm-12">
+                            <input type="submit" class="btn btn-block btn-danger" value="Sign Up">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock body %}

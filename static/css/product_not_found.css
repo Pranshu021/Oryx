@@ -1,0 +1,28 @@
+html,
+body {
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    background: url("../abstract_art.jpg") center center fixed no-repeat;
+    background-size: cover;
+}
+
+.search-people {
+    position: absolute;
+    right: 20px;
+}
+
+.container-fluid {
+    display: flex;
+    align-items: center;
+    min-height: 100%;
+    align-content: center;
+    width: 100%;
+}
+
+.main-row {
+    width: 100%;
+    color: rgb(77, 17, 218)
+}

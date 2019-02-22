@@ -1,0 +1,136 @@
+{% extends 'base.html' %} {% load staticfiles %} {% block title %} Oryx &nbsp; | &nbsp; Profile {% endblock title %} {% block head %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link href="https://fonts.googleapis.com/css?family=Patrick+Hand" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'css/profile.css' %}"> {% endblock head %} {% block brand-icon %}
+<a href="{% url 'index' %}" class="navbar-brand"><img src="{% static 'OryxLogo2.png' %}" class="logo" width=27 height=27>
+</a>
+{% endblock brand-icon %} {% block navbar-items %} {% if user.is_authenticated %}
+<li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Account
+                </a>
+    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <a class="dropdown-item" href="#">Change Password</a>
+    </div>
+</li>
+<li class="nav-item">
+    <a class="nav-link" href="{% url 'logout' %}">Log Out</a>
+</li>
+<form class="form-inline my-2 my-lg-0 search-people" method="POST">
+    {% csrf_token %}
+    <input class="form-control mr-sm-2" type="search" placeholder="Search People" id="people-search" name="people-search">
+    <input type="hidden" name="people-hiddenfield">
+    <input type="submit" class="btn btn-outline-success my-2 my-sm-0" value="Search">
+</form>
+{% endif %} {% endblock navbar-items %} {% block body %}
+
+<div class="container-fluid full-container">
+    {% if error %}
+    <script>
+        alert('{{ error }}')
+    </script>
+    {% endif %}
+    <div class="row main-row text-center">
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 left-column p-5">
+            <div class="row">
+                <div class="col-lg-12 profile-image-column">
+                    {% if user_data.info.profile_pic or user_data.info.profile_pic == 'False' %}
+                    <img src="{{ user_data.info.profile_pic.url }}" class="profile-image"> {% else %}
+                    <i class="material-icons icon-image">person</i><br> {% endif %}
+                </div>
+            </div>
+
+
+            {% if user_data == request.user %}
+
+            <form method="POST" class="horizontal-form profile_pic_form" enctype="multipart/form-data" name="profile-pic-form">
+                {% csrf_token %}
+                <div class="row mt-3">
+                    <div class="col-lg-12 col-sm-8 col-xs-4">
+                        {{ form.profile_pic }}
+                    </div>
+                    <div class="col-lg-12 col-sm-4 col-xs-4 pt-2">
+                        <input type="hidden" class="profile-pic-hiddenfield" name="profile-pic-hiddenfield">
+                        <input type="submit" class="btn btn-danger" value="Upload" onclick="return ProfileValidate()" id="upload-button">
+                    </div>
+                </div>
+            </form>
+            <div class="col-lg-12">
+                <u><a href="#" class="remove-pic" onclick=" document.getElementById('remove-form').submit();">Remove Profile Image</a></u>
+            </div>
+            <form method="POST" class="form-control remove-pic-form" id="remove-form">
+                {% csrf_token %}
+                <input type="hidden" class="remove-pic-hiddenfield" name="remove-pic-hiddenfield">
+            </form>
+
+            {% else %}
+            <div class="row">
+
+            </div>
+            {% endif %}
+
+
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <p class="mt-4 info-intro"><b><i>Info</i></b></p>
+                </div>
+            </div>
+
+            <div class="row pt-2">
+                <div class="col-6">
+                    <p class="text"><b><u>Username</u></b></p>
+                </div>
+                <div class="col-6">
+                    <p class="info-text"> {{ user_data.username }}</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-6">
+                    <p class="text"><b><u>Email</u></b></p>
+                </div>
+                <div class="col-6 info-text">
+                    <p class="info-text">{{ user_data.email }}</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-6">
+                    <p class="text"><b><u>Products Rated : </u></b></p>
+                </div>
+                <div class="col-6 info-text">
+                    {% for products in user_info %}
+                    <span class="info-text products-name">{{ products.product }} | </span> {% endfor %}
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md-6 col-xs-12 col-sm-12 p-5 text-left">
+            <b><h1 class="comments-heading">Comments</h1></b> {% for j in user_info %}
+            <p><a href="{% url 'products:product' j.product %}" class="info-text btn btn-outline-danger">{{ j.product }}  </a>
+                <span class="info-text left">{{ j.about }}</span></p>
+            <hr> {% endfor %}
+
+        </div>
+
+    </div>
+
+</div>
+
+
+</div>
+
+<script>
+    function ProfileValidate() {
+
+        if (document.getElementsByClassName('profile-pic').value = '') {
+            alert("Please submit an Image !")
+            return false;
+        } else {
+            return true;
+        }
+    }
+</script>
+
+{% endblock body %}

@@ -1,0 +1,59 @@
+body {
+    background-color: rgb(40, 46, 52);
+}
+
+.full-container {
+    height: 100%;
+}
+
+.search-people {
+    position: absolute;
+    right: 20px;
+}
+
+.name-heading {
+    font-size: 14pt;
+    letter-spacing: 3px;
+    font-family: 'Arvo', serif;
+    color: white
+}
+
+.heading {
+    font-size: 32pt;
+    letter-spacing: 10px;
+    font-family: 'Arvo', serif;
+    color: lightgreen
+}
+
+.brand-name {
+    text-transform: uppercase;
+}
+
+.name-column {
+    color: white;
+    padding: 3px;
+}
+
+.image-column {
+    color: white;
+    padding: 3px;
+    width: 200px;
+    height: 200px;
+}
+
+.product-images {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.error {
+    color: white;
+    font-size: 12pt;
+}
+
+@media screen and (max-width: 768px) {
+    body {
+        text-align: center;
+    }
+}

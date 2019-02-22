@@ -1,0 +1,86 @@
+{% extends 'base.html' %} {% load staticfiles %} {% block title %} Oryx &nbsp; | &nbsp; Log In {% endblock title %} {% block head %}
+<link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Chela+One" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'css/login.css' %}"> {% endblock head %} {% block brand-icon %}
+<a href="{% url 'index' %}" class="navbar-brand"><img src="{% static 'OryxLogo2.png' %}" class="logo" width=27 height=27>
+</a>
+{% endblock brand-icon %} {% block body %}
+
+<div class="container-fluid full-container">
+
+    <div class="container intro-container">
+        <div class="row container-row">
+            <div class="col-lg-12 container-column">
+                <h1 class="text-center intro">Oryx</h1>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container main-container text-center">
+
+        <div class="row heading-row">
+            <div class="col-lg-12 col-sm-12">
+                <h3 class="heading">Log In</h3>
+            </div>
+        </div>
+
+        <form action="." method="POST" class="form-group login-form">
+            {% csrf_token %} {% if error %}
+            <div class="row alert-danger error-row">
+                <div class="col-sm-12">
+                    {{ error }}
+                </div>
+            </div>
+            {% endif %}
+
+            <div class="row field-rows">
+
+                <div class="col-lg-12 col-sm-12">
+                    <input type="text" class="textfield form-control text-center" placeholder="Username" id="username" name="username">
+                </div>
+            </div>
+
+            <div class="row field-rows text-center">
+
+                <div class="col-lg-12 col-sm-12">
+                    <input type="password" class="textfield form-control text-center" placeholder="Password" id="password" name="password">
+                </div>
+            </div>
+
+            <div class="row button-row">
+                <div class="col-lg-12 col-sm-12">
+                    <input type="submit" class="btn btn-block btn-primary" value="Log In">
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="footer-container p-4">
+    <div class="row">
+        <div class="col-lg-4 col-sm-12 text-center footer-columns">
+            <h3 class="footer-headers">Info</h3>
+            <a class="footer-links" href="{% url 'about' %}">About Us</a><br>
+            <a class="footer-links" href="{% url 'contact' %}">Contact Us</a><br>
+            <a class="footer-links" href="#">Privacy Policy</a><br>
+            <a class="footer-links" href="#">User Agreement</a><br>
+        </div>
+
+        <div class="col-lg-4 col-sm-12 text-center footer-columns">
+            <h3 class="footer-headers">Social links</h3>
+            <a class="footer-links" href="#">Facebook</a><br>
+            <a class="footer-links" href="#">Twitter</a><br>
+            <a class="footer-links" href="#">Instagram</a><br>
+            <a class="footer-links" href="#">Pintrest</a><br>
+        </div>
+
+        <div class="col-lg-4 col-sm-12 text-center footer-columns">
+            <h3 class="footer-headers">Partners and Sponsors</h3>
+            <a class="footer-links" href="#">Anything</a><br>
+            <a class="footer-links" href="#">Something</a><br>
+            <a class="footer-links" href="#">Many Things</a><br>
+        </div>
+    </div>
+</div>
+{% endblock body %}

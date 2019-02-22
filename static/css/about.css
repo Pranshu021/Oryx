@@ -1,0 +1,55 @@
+body,
+html {
+    height: 100%;
+    background: url("../texture-background.jpg") center center fixed no-repeat;
+    background-size: cover;
+    overflow-x: hidden;
+}
+
+.navbar {
+    width: 100%;
+    position: fixed;
+    z-index: 99;
+}
+
+.search-people {
+    position: absolute;
+    right: 20px;
+}
+
+.name-row {
+    color: white;
+    padding-top: 100px;
+    padding-bottom: 70px;
+}
+
+.oryx-heading {
+    font-size: 60pt;
+    font-family: 'Pacifico', cursive;
+}
+
+.about-us {
+    color: white;
+    font-family: 'Handlee', cursive;
+    font-size: 16pt;
+    letter-spacing: 2px;
+}
+
+.about-icons {
+    font-size: 40pt;
+    color: #39FF14
+}
+
+.icon-description {
+    font-size: 16pt;
+    color: #39FF14;
+}
+
+.about-row {
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.about-columns {
+    padding: 10px;
+}

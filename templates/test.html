@@ -1,0 +1,10 @@
+{% extends 'base.html' %} {% load staticfiles %} {% block title %} Profile {% endblock title %} {% block head %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link href="https://fonts.googleapis.com/css?family=Patrick+Hand" rel="stylesheet">
+<style type="text/css">
+
+</style>
+{% endblock head %} {% block brand-icon %}
+<a href="{% url 'index' %}" class="navbar-brand"><img src="{% static 'OryxLogo2.png' %}" class="logo" width=27 height=27>
+</a>
+{% endblock brand-icon %} {% block body %} {% endblock body %}

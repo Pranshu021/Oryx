@@ -1,0 +1,83 @@
+{% extends 'base.html' %} {% load staticfiles %} {% block title %} Oryx &nbsp; | &nbsp; Products {% endblock title %} {% block head %}
+<link href="https://fonts.googleapis.com/css?family=Arvo" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'css/products.css' %}"> {% endblock head %}{% if user.is_authenticated %} {% block brand-icon %}
+<a href="{% url 'home:home' %}" class="navbar-brand"><img src="{% static 'OryxLogo2.png' %}" class="logo" width=27 height=27>
+</a> {% endblock brand-icon %} {% endif %} {% block navbar-items %}
+<li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Account
+                </a>
+    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <a class="dropdown-item" href="{% url 'profile:profile' user.username %}">Profile</a>
+        <a class="dropdown-item" href="#">Change Password</a>
+    </div>
+</li>
+
+<li class="nav-item">
+    <a class="nav-link" href="{% url 'logout' %}">Log Out</a>
+</li>
+<form class="form-inline my-2 my-lg-0 search-people" method="POST">
+    {% csrf_token %}
+    <input class="form-control mr-sm-2" type="search" placeholder="Search People" id="people-search" name="people-search">
+    <input type="hidden" name="people-hiddenfield">
+    <input type="submit" class="btn btn-outline-success my-2 my-sm-0" value="Search">
+</form>
+{% endblock navbar-items %}{% block body %}
+
+<div class="container-fluid full-container">
+    <div class="row heading-row text-center p-5">
+        <div class="col-lg-12 col-sm-12">
+            <h1 class="heading">Search Results</h1>
+            {% if not_found_error %}
+            <p class="error">{{ not_found_error }} {{ product_company }}</p>
+            {% endif %}
+
+        </div>
+    </div>
+
+
+    {% for i in smartphone_brand %}
+    <div class="row product-row">
+        <div class="col-lg-3 col-sm-0"></div>
+        <div class="col-lg-3 col-sm-12 image-column text-center">
+            <a href="{% url 'products:product' i.name %}"><img src="{{ i.image.url }}" class="product-images img-fluid"></a>
+        </div>
+        <div class="col-lg-3 col-sm-12 col-md-12 name-column">
+            <div class="row">
+                <div class="col-12">
+                    <a href="{% url 'products:product' i.name %}">
+                        <h3><span class="brand-name">{{ i.name }}</span></h3>
+                    </a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 col-sm-12">
+                    <p>Ratings : {{ i.total_ratings }}</p>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-lg-12 col-sm-12">
+                    <p>Recommended By : {{ i.recommend }}</p>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-lg-12 col-sm-12">
+                    <p>No. of Users Rated : {{ i.no_of_users }}</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 col-sm-12">
+                    <p>Not Recommended By : {{ i.not_recommend }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-sm-0"></div>
+    </div><br> {% endfor %}
+
+
+</div>
+
+
+{% endblock body %}

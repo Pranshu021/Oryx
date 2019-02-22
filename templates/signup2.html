@@ -1,0 +1,105 @@
+{% extends 'base.html' %} {% load staticfiles %} {% block title %} Sign Up {% endblock title %} {% block head %}
+<link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Chela+One" rel="stylesheet">
+
+<style type="text/css">
+    body,
+    html {
+        background-color: #282E34;
+    }
+    
+    .full-container {
+        height: 100%;
+        width: 100%;
+    }
+    
+    .container-row {
+        padding: 20px;
+        color: white;
+    }
+    
+    .intro {
+        font-family: 'Pacifico', cursive;
+        letter-spacing: 5px;
+        font-size: 48pt;
+    }
+    
+    .left-container {
+        width: 50%;
+    }
+    
+    .left-column-heading {
+        color: white;
+        font-weight: 600;
+    }
+    
+    .smartphone-image {
+        width: 150px;
+        height: 150px;
+    }
+    
+    .smartphones-name,
+    .smartphones-ratings {
+        color: white;
+        font-size: 600;
+        text-transform: capitalize;
+    }
+    
+    .rating-labels {
+        padding: 1px 4px 1px 4px;
+        border-radius: 5px;
+    }
+    
+    .images-row {
+        padding: 10px;
+    }
+    
+    @media screen and (max-width: 500px) {}
+</style>
+{% endblock head %} {% block body %}
+<div class="container-fluid full-container">
+    <div class="row container-row">
+        <div class="col-lg-12 container-column">
+            <h1 class="text-center intro">Oryx</h1>
+        </div>
+    </div>
+
+    <div class="container left-container">
+        <h1 class="text-center left-column-heading">Top 4 Smartphones</h1>
+        <div class="row text-center images-row">
+
+            {% for i in top_two %}
+            <div class="col-lg-6 col-sm-12 col-xs-12">
+                <img src="{{ i.image.url }}" alt="Number One Smartphone" class="smartphone-image"><br>
+                <span class="smartphones-name">{{ i.name }}</span><br>
+                <span class="smartphones-ratings">Ratings : </span><span class="btn-danger rating-labels">{{ i.total_ratings }}</span>
+            </div>
+            {% endfor %}
+
+            <!-- <div class="col-lg-6">
+                    <img src="{{ best.image.url }}" alt="Number One Smartphone" class="smartphone-image">
+                </div>
+                <div class="col-lg-6">
+                    <img src="{{ best.image.url }}" alt="Number One Smartphone" class="smartphone-image">
+                </div> -->
+        </div>
+        <div class="row text-center images-row">
+
+            {% for i in top_four %}
+            <div class="col-lg-6">
+                <img src="{{ i.image.url }}" alt="Number One Smartphone" class="smartphone-image"><br>
+                <span class="smartphones-name">{{ i.name }}</span><br>
+                <span class="smartphones-ratings">Ratings : </span><span class="btn-danger rating-labels">{{ i.total_ratings }}</span>
+
+            </div>
+            {% endfor %}
+
+
+            <!-- <div class="col-lg-6">
+                    <img src="{{ best.image.url }}" alt="Number One Smartphone" class="smartphone-image">
+                </div> -->
+        </div>
+    </div>
+
+</div>
+{% endblock body %}

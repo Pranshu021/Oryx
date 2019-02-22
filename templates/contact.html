@@ -1,0 +1,100 @@
+{% extends 'base.html' %} {% load staticfiles %} {% block title %} Oryx &nbsp; | &nbsp; Contact Us {% endblock title %} {% block head %}
+<link href="https://fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'css/contact.css' %}"> {% endblock head %} {% block brand-icon %} {% if user.is_authenticated %}
+
+<a href="{% url 'home:home' %}" class="navbar-brand"><img src="{% static 'OryxLogo2.png' %}" class="logo" width=27 height=27>
+</a>
+
+{% else %}
+
+<a href="{% url 'index' %}" class="navbar-brand"><img src="{% static 'OryxLogo2.png' %}" class="logo" width=27 height=27>
+</a>
+
+{% endif %} {% endblock brand-icon %} {% block navbar-items %} {% if user.is_authenticated %}
+<li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Account
+            </a>
+    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <a class="dropdown-item" href="{% url 'profile:profile' user.username %}">Profile</a>
+        <a class="dropdown-item" href="#">Change Password</a>
+    </div>
+</li>
+<li class="nav-item">
+    <a class="nav-link" href="{% url 'logout' %}">Log Out</a>
+</li>
+<form class="form-inline my-2 my-lg-0 search-people" method="POST">
+    {% csrf_token %}
+    <input class="form-control mr-sm-2" type="search" placeholder="Search People" id="people-search" name="people-search">
+    <input type="hidden" name="people-hiddenfield">
+    <input type="submit" class="btn btn-outline-success my-2 my-sm-0" value="Search">
+</form>
+{% endif %} {% endblock navbar-items %} {% block body %}
+<div class="container-fluid full-container">
+    <div class="row heading-row text-center p-3">
+        <div class="col-lg-12 col-sm-12">
+            <h1 class="heading">Contact Us</h1>
+        </div>
+    </div>
+
+    <div class="row contact-row">
+        <div class="col-lg-3 col-sm-0">
+        </div>
+        <div class="col-lg-6 col-sm-12 contact-column text-center">
+            <div class="row">
+                <div class="col-lg-12 col-sm-12">
+                    <p class="upper-lines">Feel free to contact us at the following Information for anything like bugs, complement or for any kind of Help. We love to Help !</p>
+                </div>
+            </div>
+
+            <div class="row info-row">
+                <div class="col-lg-3 col-sm-6">
+                    <b>Email : </b>
+                </div>
+                <div class="col-lg-9 col-sm-6">
+                    <a href=" https:www.gmail.com">oryx@gmail.com</a>
+                </div>
+            </div>
+
+            <div class="row info-row ">
+                <div class="col-lg-3 col-sm-6 ">
+                    <b>Phone : </b>
+                </div>
+                <div class="col-lg-9 col-sm-6 ">
+                    <a href='#'>+91-8683873337</a>
+                </div>
+            </div>
+
+            <div class="row info-row ">
+                <div class="col-lg-3 col-sm-6 ">
+                    <b>Twitter : </b>
+                </div>
+                <div class="col-lg-9 col-sm-6 ">
+                    <a href="# ">twitter.com/oryx</a>
+                </div>
+            </div>
+
+            <div class="row info-row ">
+                <div class="col-lg-3 col-sm-6 ">
+                    <b>LinkedIn : </b>
+                </div>
+                <div class="col-lg-9 col-sm-6 ">
+                    <a href="# ">linkedin.com/oryx</a>
+                </div>
+            </div>
+
+            <div class="row info-row ">
+                <div class="col-lg-3 col-sm-6 ">
+                    <b> Facebook :</b>
+                </div>
+                <div class="col-lg-9 col-sm-6 ">
+                    <a href="# ">facebook.com/oryx</a>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-lg-3 col-sm-0 ">
+        </div>
+    </div>
+</div>
+{% endblock body %}

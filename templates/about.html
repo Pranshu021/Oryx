@@ -1,0 +1,56 @@
+{% extends 'base.html' %} {% load staticfiles %} {% block title %} Oryx &nbsp; | &nbsp; About Us {% endblock title %} {% block head %}
+<link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Handlee" rel="stylesheet">
+<link href="{% static 'css/about.css' %}" rel="stylesheet"> {% endblock head %}{% block brand-icon %} {% if user.is_authenticated %}
+
+<a href="{% url 'home:home' %}" class="navbar-brand"><img src="{% static 'OryxLogo2.png' %}" class="logo" width=27 height=27>
+</a>
+
+{% else %}
+
+<a href="{% url 'index' %}" class="navbar-brand"><img src="{% static 'OryxLogo2.png' %}" class="logo" width=27 height=27>
+</a>
+
+{% endif %} {% endblock brand-icon %} {% block navbar-items %} {% if user.is_authenticated %}
+<li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Account
+            </a>
+    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <a class="dropdown-item" href="{% url 'profile:profile' user.username %}">Profile</a>
+        <a class="dropdown-item" href="#">Change Password</a>
+    </div>
+</li>
+
+<li class="nav-item">
+    <a class="nav-link" href="{% url 'logout' %}">Log Out</a>
+</li>
+<form class="form-inline my-2 my-lg-0 search-people" method="POST">
+    {% csrf_token %}
+    <input class="form-control mr-sm-2" type="search" placeholder="Search People" id="people-search" name="people-search">
+    <input type="hidden" name="people-hiddenfield">
+    <input type="submit" class="btn btn-outline-success my-2 my-sm-0" value="Search">
+</form>
+{% endif %} {% endblock navbar-items %} {% block body %}
+<div class="container-fluid">
+
+    <div class="row name-row text-center">
+        <div class="col col-sm-12">
+            <h1 class="oryx-heading">Oryx</h1>
+        </div>
+    </div>
+
+    <div class="row about-us-row text-center">
+        <div class="col-lg-3"></div>
+        <div class="col-lg-6 col-sm-12">
+            <p class="about-us">The aim of Oryx is to help the users who want to buy any tech gadget by letting them know the value of the product. We here like to improve the concept of rating system by including the real people into it and dividing the ratings into different
+                categories, Users can rate each aspect of the product and the one who wants to buy will be lucky to know the true value of the product. We are not responsible for the ratings provided and all the ratings are given by the users who rate
+                the products to help others by the grace of their own experience with the product. Oryx also wants to help the companies in evaluating their products because the ratings are not given by only some members of the website but their own customers
+                rate them according to their experience with the product. This also helps them to evaluate their stand in the market.</p>
+        </div>
+        <div class="col-lg-3"></div>
+    </div>
+
+</div>
+
+{% endblock body %}

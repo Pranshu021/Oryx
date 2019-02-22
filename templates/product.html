@@ -1,0 +1,479 @@
+{% extends 'base.html' %} {% load staticfiles %} {% block title %} Oryx &nbsp; | &nbsp; Products {% endblock title %} {% block head %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="{% static 'css/product.css' %}"> {% endblock head %}{% if user.is_authenticated %} {% block brand-icon %}
+<a href="{% url 'home:home' %}" class="navbar-brand"><img src="{% static 'OryxLogo2.png' %}" class="logo" width=27 height=27>
+</a> {% endblock brand-icon %} {% endif %} {% block navbar-items %}
+<li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Account
+                </a>
+    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <a class="dropdown-item" href="{% url 'profile:profile' user.username %}">Profile</a>
+        <a class="dropdown-item" href="#">Change Password</a>
+    </div>
+</li>
+<li class="nav-item">
+    <a class="nav-link" href="{% url 'logout' %}">Log Out</a>
+</li>
+<form class="form-inline my-2 my-lg-0 search-people" method="POST">
+    {% csrf_token %}
+    <input class="form-control mr-sm-2" type="search" placeholder="Search People" id="people-search" name="people-search">
+    <input type="hidden" name="people-hiddenfield">
+    <input type="submit" class="btn btn-outline-success my-2 my-sm-0" value="Search">
+</form>
+{% endblock navbar-items %}{% block body %}
+
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Comments</h5>
+                <button type="button" class="close" data-dismiss="modal">
+            <span>&times;</span>
+          </button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid modal-container">
+                    <div class="row comments-heading-row text-center p-2">
+                        <div class="col-lg-12">
+                            <h5 class="comment-heading">
+                                Choose Titles from below :
+                            </h5>
+                        </div>
+                    </div>
+                    <div class="row error-row">
+                        <div class="col-lg-12">
+                            <p class="error text-center" id="comments_error">
+
+                            </p>
+                        </div>
+                    </div>
+                    <form method="POST" class="form-horizontal comments-form">
+                        {% csrf_token %}
+                        <div class="row comments p-2">
+                            <div class="col-lg-12">
+                                <input type="hidden" class="hidden-field" name="hide">
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="1" name="checkboxes" value="1">
+                                    <label class="custom-control-label" for="1">Recommend</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row comments p-2">
+                            <div class="col-lg-12">
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="2" name="checkboxes" value="2">
+                                    <label class="custom-control-label" for="2">Would Not Recommend</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row comments p-2">
+                            <div class="col-lg-12">
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="3" name="checkboxes" value="3">
+                                    <label class="custom-control-label" for="3">Facing Issues with this product</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row comments p-2">
+                            <div class="col-lg-12">
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="4" name="checkboxes" value="4">
+                                    <label class="custom-control-label" for="4">Overpriced</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row comments p-2">
+                            <div class="col-lg-12">
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="5" name="checkboxes" value="4">
+                                    <label class="custom-control-label" for="5">Best Product in this Price</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row comments p-2">
+                            <div class="col-lg-12">
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="6" name="checkboxes" value="4">
+                                    <label class="custom-control-label" for="6">Smooth with no issues</label>
+                                </div>
+                            </div>
+                        </div>
+
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary" class="comment-button" onclick="return validate_comment()">Save changes</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="container-fluid full-container">
+    <div class="name-row p-4">
+        <div class="col-lg-12 col-sm-12 text-center">
+            <h1 class="smartphone-name">{{ smartphones.name }}</h1>
+        </div>
+    </div>
+
+    <div class="row image-row text-center">
+        <div class="col-lg-6 col-sm-12 smartphone-image-column">
+            <img src="{{ smartphones.image.url }}" class="smartphone-image img-fluid" />
+        </div>
+
+
+
+        <div class="col-lg-6 col-sm-12 smartphone-info">
+            <div class="row text-center">
+                <div class="col-lg-6 col-sm-6 text-center">
+                    <p class="stats">No. of Users Rated </p>
+                </div>
+
+                <div class="col-lg-6 col-sm-6">
+                    <span class="btn-danger rating-labels">{{ smartphones.no_of_users }}</span>
+                </div>
+
+            </div>
+            <div class="row stats-row">
+                <div class="col-lg-6 col-sm-6 text-center">
+                    <p class="stats">No. Of Users Commented </p>
+                </div>
+
+                <div class="col-lg-6 col-sm-6">
+                    <span class="btn-danger rating-labels">{{ smartphones.written }}</span>
+                </div>
+
+            </div>
+            <div class="row stats-row">
+                <div class="col-lg-6 col-sm-6">
+                    <p class="stats">Recommended by </p>
+                </div>
+
+                <div class="col-lg-6 col-sm-6">
+                    <span class="btn-danger rating-labels">{{ smartphones.recommend }}</span>
+                </div>
+
+            </div>
+            <div class="row stats-row">
+                <div class="col-lg-6 col-sm-6">
+                    <p class="stats">Not Recommended by </p>
+                </div>
+
+                <div class="col-lg-6 col-sm-6">
+                    <span class="btn-danger rating-labels">{{ smartphones.not_recommend }}</span>
+                </div>
+            </div>
+            <div class="row stats-row">
+                <div class="col-lg-6 col-sm-6">
+                    <p class="stats">Facing Issues </p>
+                </div>
+
+                <div class="col-lg-6 col-sm-6">
+                    <span class="btn-danger rating-labels">{{ smartphones.issues_with_the_product }}</span>
+                </div>
+            </div>
+            <div class="row stats-row">
+                <div class="col-lg-6 col-sm-6">
+                    <p class="stats">No Issues </p>
+                </div>
+
+                <div class="col-lg-6 col-sm-6">
+                    <span class="btn-danger rating-labels">{{ smartphones.smooth }}</span>
+                </div>
+            </div>
+            <div class="row stats-row">
+                <div class="col-lg-6 col-sm-6">
+                    <p class="stats">Titled Overpriced By </p>
+                </div>
+
+                <div class="col-lg-6 col-sm-6">
+                    <span class="btn-danger rating-labels">{{ smartphones.overpriced }}</span>
+                </div>
+            </div>
+            <div class="row stats-row">
+                <div class="col-lg-6 col-sm-6">
+                    <p class="stats">Titled Budget Smartphone by </p>
+                </div>
+
+                <div class="col-lg-6 col-sm-6">
+                    <span class="btn-danger rating-labels">{{ smartphones.budget }}</span>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <form class="ratings-form" method="POST">
+        {% csrf_token %} {% if error %} {% if error2 %}
+        <div class="row error-row text-center p-3">
+            <div class="col-lg-12">
+                <i><h3 class="error-text">{{ error }}</h1></i>
+            </div>
+        </div>
+        <div class="row error-row text-center p-3">
+            <div class="col-lg-12">
+                <i><h3 class="error-text">{{ error2 }}</h1></i>
+            </div>
+        </div>
+        {% else %}
+        <div class="row error-row text-center p-5">
+            <div class="col-lg-12">
+                <i><h3 class="error-text">{{ error }}</h1></i>
+            </div>
+        </div>
+        <div class="row error-row text-center p-3">
+            <div class="col-lg-12">
+                <input type="button" class="btn btn-success submit-button btn-lg" id="comments" value="Give Product Title" data-toggle="modal" data-target="#exampleModalCenter">
+            </div>
+        </div>
+        {% endif %} {% else %}
+        <div class="row ratings-row text-center">
+            <div class="col-lg-6 col-sm-12">
+                <input type="hidden" class="hidden-field" name="hidden">
+                <h3 class="rating-titles">Performance : </h3>
+            </div>
+
+            <div class="col-lg-5 col-sm-12 slidecontainer">
+                <input type="range" min="0" max="10" value="0" class="slider" id="performanceRange" name="performance_range">
+            </div>
+            <div class="col-lg-1">
+                <p class="ratings"><span id="performance_ratings"></span></p>
+            </div>
+
+
+        </div>
+
+        <div class="row ratings-row text-center">
+
+            <div class="col-lg-6 col-sm-12">
+                <h3 class="rating-titles">Design : </h3>
+            </div>
+
+            <div class="col-lg-5 col-sm-12 slidecontainer">
+                <input type="range" min="0" max="10" value="0" class="slider" id="designRange" name="design_range">
+            </div>
+
+            <div class="col-lg-1">
+                <p class="ratings"><span id="design_ratings"></span></p>
+            </div>
+
+        </div>
+
+        <div class="row ratings-row text-center">
+
+            <div class="col-lg-6 col-sm-12">
+                <h3 class="rating-titles">Camera : </h3>
+            </div>
+
+            <div class="col-lg-5 col-sm-12 slidecontainer">
+                <input type="range" min="0" max="10" value="0" class="slider" id="cameraRange" name="camera_range">
+            </div>
+            <div class="col-lg-1">
+                <p class="ratings"><span id="camera_ratings"></span></p>
+            </div>
+        </div>
+
+        <div class="row ratings-row text-center">
+
+            <div class="col-lg-6 col-sm-12">
+                <h3 class="rating-titles">Features : </h3>
+            </div>
+
+            <div class="col-lg-5 col-sm-12 slidecontainer">
+                <input type="range" min="0" max="10" value="0" class="slider" id="featuresRange" name="features_range">
+            </div>
+
+            <div class="col-lg-1">
+                <p class="ratings"><span id="features_ratings"></span></p>
+            </div>
+
+        </div>
+        <div class="row ratings-row text-center">
+
+            <div class="col-lg-6 col-sm-12">
+                <h3 class="rating-titles">Sound : </h3>
+            </div>
+
+            <div class="col-lg-5 col-sm-12 slidecontainer">
+                <input type="range" min="0" max="10" value="0" class="slider" id="soundRange" name="sound_range">
+            </div>
+
+            <div class="col-lg-1">
+                <p class="ratings"><span id="sound_ratings"></span></p>
+            </div>
+
+        </div>
+
+        <div class="row value-row text-center p-3">
+            <div class="col-lg-12">
+                <h1 class="value">Total Ratings : <span id="total_ratings"></span></h1>
+            </div>
+        </div>
+
+        <div class="row submit-row text-center p-3">
+            <div class="col-lg-12">
+                <input type="submit" class="btn btn-outline-danger btn-lg" id="submit-button" value="Submit Ratings">
+            </div>
+        </div>
+
+    </form>
+
+    {% endif %}
+
+</div>
+
+<div class="container-fluid comments-container p-5">
+    <div class="row comments-heading">
+        <h3 class="comments-text"><b>Comments</b></h3>
+        <hr class="form-line">
+    </div>
+    <form class="form-horizontal comments-form" method="POST">
+        {% csrf_token %} {% if error4 %}
+        <div class="error-row">
+            <h3 class="error-text">
+                {{ error4 }}
+            </h3>
+        </div>
+        {% else %}
+        <div class="row comments-form-row">
+            {{ form.about }}
+        </div>
+
+        {% if error3 %}
+        <script>
+            alert("Please Rate the Product First !")
+        </script>
+
+
+        {% endif %}
+
+
+        <input type="hidden" name="comments-hiddenfield">
+
+        <div class="row pt-2">
+            <input type="submit" class="btn btn-outline-success btn-block" value="Submit">
+        </div>
+
+    </form>
+    {% endif %}
+</div>
+
+<div class="contianer-fluid comments-container2 pl-5 pr-5">
+
+    {% for i in comments %}
+
+
+    <hr class="comments-line">
+    <div class="row">
+        <div class="row">
+            <div class="col-lg-12">
+                {% if i.user.info.profile_pic %}
+                <img src="{{ i.user.info.profile_pic.url }}" alt="{{ i.user.username }}" class="profile-image"> {% else %}
+                <i class="material-icons icon-image p-0">person</i> {% endif %}
+                <a href="{% url 'profile:profile' i.user.username %}" class="comments pl-2">{{ i.user }}</a>
+            </div>
+        </div>
+        <div class="col-lg-12 p-2">
+            <p class="comments">{{ i.about }}</p>
+        </div>
+    </div>
+
+    <!-- <div class="row smileys-row">
+        <div class="col-lg-12">
+
+            <button class="btn btn-outline-light" onclick="document.getElementById('like-button').submit()">Like</button>
+            <button class="btn btn-outline-light" onclick="document.getElementById('dislike-button').submit()">Dislike</button>
+
+            <form method="POST" class="form-control like-form" id="like-button">
+                {% csrf_token %}
+                <input type="hidden" class="like-hiddenfield">
+            </form>
+
+            <form method="POST" class="form-control dislike-form" id="dislike-button">
+                {% csrf_token %}
+                <input type="hidden" namclass="dislike-hiddenfield">
+            </form>
+
+        </div>
+    </div> -->
+    <hr> {% endfor %}
+
+
+
+</div>
+
+
+<script>
+    var performance_slider = document.getElementById("performanceRange");
+    var design_slider = document.getElementById("designRange");
+    var camera_slider = document.getElementById("cameraRange");
+    var features_slider = document.getElementById("featuresRange");
+    var sound_slider = document.getElementById("soundRange");
+
+    var total_ratings = (Number(performance_slider.value) + Number(design_slider.value) + Number(camera_slider.value) + Number(features_slider.value) + Number(sound_slider.value)) / 5
+    document.getElementById("total_ratings").innerHTML = total_ratings
+
+
+    // Update the current slider value (each time you drag the slider handle)
+    performance_slider.oninput = function() {
+        document.getElementById("performance_ratings").innerHTML = this.value;
+        var total_ratings = (Number(performance_slider.value) + Number(design_slider.value) + Number(camera_slider.value) + Number(features_slider.value) + Number(sound_slider.value)) / 5
+        document.getElementById("total_ratings").innerHTML = total_ratings
+
+    }
+
+    design_slider.oninput = function() {
+        document.getElementById("design_ratings").innerHTML = this.value;
+        var total_ratings = (Number(performance_slider.value) + Number(design_slider.value) + Number(camera_slider.value) + Number(features_slider.value) + Number(sound_slider.value)) / 5
+        document.getElementById("total_ratings").innerHTML = total_ratings
+    }
+
+    camera_slider.oninput = function() {
+        document.getElementById("camera_ratings").innerHTML = this.value;
+        var total_ratings = (Number(performance_slider.value) + Number(design_slider.value) + Number(camera_slider.value) + Number(features_slider.value) + Number(sound_slider.value)) / 5
+        document.getElementById("total_ratings").innerHTML = total_ratings
+    }
+
+    features_slider.oninput = function() {
+        document.getElementById("features_ratings").innerHTML = this.value;
+        var total_ratings = (Number(performance_slider.value) + Number(design_slider.value) + Number(camera_slider.value) + Number(features_slider.value) + Number(sound_slider.value)) / 5
+        document.getElementById("total_ratings").innerHTML = total_ratings
+    }
+
+    sound_slider.oninput = function() {
+        document.getElementById("sound_ratings").innerHTML = this.value;
+        var total_ratings = (Number(performance_slider.value) + Number(design_slider.value) + Number(camera_slider.value) + Number(features_slider.value) + Number(sound_slider.value)) / 5
+        document.getElementById("total_ratings").innerHTML = total_ratings
+    }
+
+    function validate_comment() {
+        if (document.getElementById("1").checked == false && document.getElementById("2").checked == false && document.getElementById("3").checked == false && document.getElementById("4").checked == false && document.getElementById("5").checked == false && document.getElementById("6").checked == false) {
+            document.getElementById("comments_error").innerHTML = "Please select any of the comments below"
+            return false;
+        }
+
+        if (document.getElementById("1").checked == true && document.getElementById("2").checked == true) {
+            document.getElementById("comments_error").innerHTML = "You cannot select both Recommend and Not Recommend"
+            return false;
+        }
+
+        if (document.getElementById("3").checked == true && document.getElementById("6").checked == true) {
+            document.getElementById("comments_error").innerHTML = "You cannot select both Facing Issues and Not Facing Issues"
+            return false;
+        }
+        return true;
+    }
+</script>
+
+{% endblock body %}

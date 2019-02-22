@@ -1,0 +1,44 @@
+body {
+    background-color: rgb(40, 46, 52);
+    color: white;
+}
+
+.heading-title {
+    font-size: 32pt;
+    letter-spacing: 10px;
+    font-family: 'Arvo', serif;
+    color: lightgreen
+}
+
+.search-people {
+    position: absolute;
+    right: 20px;
+}
+
+.dp-column {
+    width: 100px;
+    height: 130px;
+}
+
+.dp {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.icon-image {
+    font-size: 72pt;
+    border: 1px solid white;
+    border-radius: 50%;
+}
+
+.user-info-text {
+    text-transform: capitalize;
+    font-size: 16pt;
+}
+
+@media screen and (max-width: 768px) {
+    body {
+        text-align: center;
+    }
+}

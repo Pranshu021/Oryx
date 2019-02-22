@@ -1,0 +1,40 @@
+body,
+html {
+    background: url("../texture-background.jpg") center center fixed no-repeat;
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+}
+
+.search-people {
+    position: absolute;
+    right: 20px;
+}
+
+.full-container {
+    width: 100%;
+    height: 100%;
+}
+
+.heading-row {
+    width: 100%
+}
+
+.heading {
+    color: white;
+    font-size: 48pt;
+    font-weight: 600;
+    letter-spacing: 5px;
+    font-family: 'Bree Serif', serif;
+}
+
+.contact-column {
+    background: rgb(31, 29, 29);
+    border-radius: 5px;
+    padding: 5%;
+    color: white;
+}
+
+.info-row {
+    padding: 1%;
+}
