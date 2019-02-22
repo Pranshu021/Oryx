@@ -27,16 +27,11 @@ SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
 
 ALLOWED_HOSTS = [
-<<<<<<< HEAD
     '127.0.0.1',
 ]
 
-=======
- 
-]
 
 # Heroku: Update database configuration from $DATABASE_URL.
->>>>>>> 73acc71af4350816b0f03a9135d41331ea14881c
 import dj_database_url
 db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES = {'default': dj_database_url.config(conn_max_age=500)}
