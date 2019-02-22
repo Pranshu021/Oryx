@@ -55,7 +55,8 @@ def TestView(request):
     return render(request, 'test.html')
 
 def UploadView(request):
-    for i in os.listdir('..\\downloads'):
+    os.chdir('..\\')
+    for i in os.listdir('downloads'):
         obj = Smartphone()
         obj.name = re.sub('.jpeg' or '.jpg', '', i).lower()
         obj.image = i
