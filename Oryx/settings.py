@@ -3,39 +3,38 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_DIR = os.path.join(BASE_DIR, 'static')
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 's3euaut-0%)(o#dz+v_p2ro*x!%+)pk&%-epkvmo2ts=q7kyb_'
-# SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 's3euaut-0%)(o#dz+v_p2ro*x!%+)pk&%-epkvmo2ts=q7kyb_')
+# SECRET_KEY = 's3euaut-0%)(o#dz+v_p2ro*x!%+)pk&%-epkvmo2ts=q7kyb_'
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 's3euaut-0%)(o#dz+v_p2ro*x!%+)pk&%-epkvmo2ts=q7kyb_')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-SECURE_CONTENT_TYPE_NOSNIFF = False
+SECURE_CONTENT_TYPE_NOSNIFF = True
 
-SECURE_BROWSER_XSS_FILTER = False
+SECURE_BROWSER_XSS_FILTER = True
 
-SECURE_SSL_REDIRECT = False
+SECURE_SSL_REDIRECT = True
 
-SESSION_COOKIE_SECURE = False
+SESSION_COOKIE_SECURE = True
 
-CSRF_COOKIE_SECURE = False
+CSRF_COOKIE_SECURE = True
 
 ALLOWED_HOSTS = [
     '127.0.0.1',
-    '192.168.43.204',
-    '111.11.14.70',
-    '192.168.1.103',
-    '192.168.1.107',
 ]
 
+import dj_database_url
+db_from_env = dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(db_from_env)
 
-# Application definition
+
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -54,13 +53,13 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    # 'Oryx.middleware.RedirectionMiddleware',
 ]
 
 ROOT_URLCONF = 'Oryx.urls'
@@ -141,9 +140,6 @@ USE_L10N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/2.0/howto/static-files/
-
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
@@ -152,3 +148,5 @@ STATICFILES_DIRS = [
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
