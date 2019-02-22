@@ -1,1 +1,1 @@
-web: gunicorn Oryx.wsgi.application --log-file -
+web: gunicorn Oryx.wsgi --log-file -
