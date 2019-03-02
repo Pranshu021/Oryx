@@ -60,7 +60,7 @@ html {
     background-color: rgba(32, 28, 28, 0.555);
     text-align: center;
     text-align: justify;
-    position: fixed;
+    bottom: 0px;
 }
 
 .footer-headers {
