@@ -3,6 +3,8 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
+AWS_S3_ACCESS_KEY_ID='AKIAITGWJK6BWS4WJ4FA' 
+AWS_S3_SECRET_ACCESS_KEY='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'
 AWS_S3_SECURE_URLS = False       # use http instead of https
 AWS_QUERYSTRING_AUTH = False     # don't add complex authentication-related query parameters for 
 AWS_DEFAULT_ACL = 'public-read'
