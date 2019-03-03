@@ -22,4 +22,3 @@ urlpatterns = [
     path('api/', include('api.urls'), name="api"),
     path('upload', views.UploadView, name="upload"),
 ] 
-urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

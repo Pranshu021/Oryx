@@ -8,4 +8,3 @@ app_name = 'api'
 urlpatterns = [
     path('smartphoneapi/<str:name>', views.SmartphoneAPIView.as_view(), name="smartphoneAPI"),
 ] 
-urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
