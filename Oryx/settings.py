@@ -1,4 +1,5 @@
 import os
+import storages
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -66,6 +67,7 @@ INSTALLED_APPS = [
     'login',
     'profiles',
     'home',
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -143,9 +145,6 @@ REST_FRAMEWORK = {
 }
 
 
-# Internationalization
-# https://docs.djangoproject.com/en/2.0/topics/i18n/
-
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
@@ -156,8 +155,6 @@ USE_L10N = True
 
 USE_TZ = True
 
-
-# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 import dj_database_url
 db_from_env = dj_database_url.config(conn_max_age=500)
