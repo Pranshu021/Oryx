@@ -3,15 +3,13 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 AWS_S3_ACCESS_KEY_ID='AKIAITGWJK6BWS4WJ4FA' 
 AWS_S3_SECRET_ACCESS_KEY='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'
-# AWS_S3_SECURE_URLS = False       
-# AWS_QUERYSTRING_AUTH = False 
-STATIC_ROOT = 'static'
-STATIC_URL = 'https://s3.ap-south-1.amazonaws.com/oryxrating/static/'
-STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-MEIDA_ROOT = 'media'
-MEDIA_URL = 'https://s3.ap-south-1.amazonaws.com/oryxrating/media/'
+STATIC_ROOT = 'https://s3.ap-south-1.amazonaws.com/oryxrating/static/'
+STATIC_URL = 'static'
+MEIDA_ROOT = 'https://s3.ap-south-1.amazonaws.com/oryxrating/media/'
+MEDIA_URL = 'media'
 # STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 # STATIC_URL = '/static/'
 # MEDIA_URL = '/media/'
@@ -149,8 +147,6 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
-MEDIA_URL = '/media/'
 
 
 # STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
