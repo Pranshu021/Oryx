@@ -6,10 +6,14 @@ TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
 
 
 AWS_STORAGE_BUCKET_NAME = 'oryxrating'
-AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+# AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+AWS_S3_CUSTOM_DOMAIN = 's3.ap-south-1.amazonaws.com/%s' % AWS_STORAGE_BUCKET_NAME
+
 AWS_S3_OBJECT_PARAMETERS = {
     'CacheControl': 'max-age=86400',
 }
+
+
 
 AWS_LOCATION = 'static'
 STATICFILES_DIRS = [
@@ -19,10 +23,6 @@ STATICFILES_DIRS = [
 STATIC_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
 STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 DEFAULT_FILE_STORAGE = 'Oryx.storage_backends.MediaStorage'
-# STATIC_URL = '/static/'
-# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-# MEDIA_URL = '/media/'
-# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 's3euaut-0%)(o#dz+v_p2ro*x!%+)pk&%-epkvmo2ts=q7kyb_')
