@@ -63,7 +63,7 @@ def UploadView(request):
         obj = Smartphone()
         obj.name = re.sub('.jpeg' or '.jpg', '', i).lower()
         j = re.sub(' ', '+', i)
-        obj.image = j
+        obj.image = i
         obj.save()
 
     return render(request, 'upload.html')
