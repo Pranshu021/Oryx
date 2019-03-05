@@ -55,7 +55,7 @@ def TestView(request):
     return render(request, 'test.html')
 
 def PrivacyPolicyView(request):
-    return render(request, 'privact_policy.html')
+    return render(request, 'privacy_policy.html')
 
 
 def UploadView(request):
