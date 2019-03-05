@@ -54,22 +54,3 @@ html {
 .error-row {
     color: red;
 }
-
-.footer-container {
-    color: #ddd;
-    background-color: rgba(32, 28, 28, 0.555);
-    text-align: center;
-    text-align: justify;
-    bottom: 0px;
-}
-
-.footer-headers {
-    text-align: center;
-    color: gray;
-}
-
-.footer-columns {
-    display: block;
-    font-size: 12px;
-    letter-spacing: 3px;
-}

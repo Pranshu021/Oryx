@@ -15,7 +15,6 @@ class IndexView(View):
         if request.session.get('user_id') is not None:
             return redirect(reverse('home:home',))
         else:
-            # print(user_session)
             return render(request, self.template_name)
 
 class TestView(TemplateView):
