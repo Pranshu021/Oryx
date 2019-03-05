@@ -1,5 +1,15 @@
 {% extends 'base.html' %} {% load staticfiles %} {% block title %} Oryx &nbsp; | &nbsp; Real Product Rating System {% endblock title %} {% block head %}
-<link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet"> {% endblock head %} {% block body %}
+<link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet"> {% endblock head %} {% block body %} {% block brand-icon %} {% if user.is_authenticated %}
+
+<a href="{% url 'home:home' %}" class="navbar-brand"><img src="{% static 'OryxLogo2.png' %}" class="logo" width=27 height=27>
+</a>
+
+{% else %}
+
+<a href="{% url 'index' %}" class="navbar-brand"><img src="{% static 'OryxLogo2.png' %}" class="logo" width=27 height=27>
+</a>
+
+{% endif %}
 <h1>Privacy Policy for Oryxrating</h1>
 <p>At www.oryxrating.com, accessible from https://www.oryxrating.com, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by www.oryxrating.com and how we use
     it.
