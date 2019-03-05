@@ -48,6 +48,10 @@ def ProfileView(request, username):
 def UserProfileViews(request, user_search):
     user = User.objects.filter(username__startswith=user_search) or User.objects.filter(username__endswith=user_search)
 
+    if 'people-hiddenfield' in request.POST:
+            user_search = request.POST.get('people-search')
+            return redirect(reverse('profile:users', args=(user_search,)))
+
     if user:
         count = 0
         comments_count = Rated.objects.filter(user=user[0], has_commented = True)
@@ -62,6 +66,9 @@ def UserProfileViews(request, user_search):
 
 @login_required
 def ChangePasswordView(request):
+    if 'people-hiddenfield' in request.POST:
+            user_search = request.POST.get('people-search')
+            return redirect(reverse('profile:users', args=(user_search,)))
     user = request.user
     user_obj = User.objects.get(username=request.user.username)
     if request.method == 'POST':

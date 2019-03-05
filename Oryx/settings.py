@@ -42,7 +42,7 @@ DEFAULT_FILE_STORAGE = 'Oryx.storage_backends.MediaStorage'
 
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 's3euaut-0%)(o#dz+v_p2ro*x!%+)pk&%-epkvmo2ts=q7kyb_')
 
-DEBUG = True
+DEBUG = False
 
 SECURE_CONTENT_TYPE_NOSNIFF = True
 
