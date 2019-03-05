@@ -20,5 +20,6 @@ urlpatterns = [
     path('contact-us', views.ContactView.as_view(), name="contact"),
     path('testing', views.TestView, name="test"),
     path('api/', include('api.urls'), name="api"),
+    path('privacy_policy', views.PrivacyPolicy, name="privacy_policy"),
     path('upload', views.UploadView, name="upload"),
 ] 
