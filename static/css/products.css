@@ -58,5 +58,6 @@ body {
     }
     .image-column {
         left: 22%;
+        object-fit: none;
     }
 }
