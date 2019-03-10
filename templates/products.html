@@ -39,7 +39,7 @@
     {% for i in smartphone_brand %}
     <div class="row product-row">
         <div class="col-lg-3 col-md-3"></div>
-        <div class="col-12 col-lg-6 col-md-4 image-column text-center">
+        <div class="col-12 col-lg-3 col-md-3 image-column text-center">
             <a href="{% url 'products:product' i.name %}"><img src="{{ i.image.url }}" class="product-images img-fluid"></a>
         </div>
         <div class="col-lg-3 col-sm-12 col-md-12 name-column">
