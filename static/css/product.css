@@ -4,6 +4,11 @@ html {
     width: 100%;
 }
 
+.search-people {
+    position: absolute;
+    right: 20px;
+}
+
 .full-container,
 .comments-container,
 .name-row {

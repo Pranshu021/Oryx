@@ -3,6 +3,11 @@ body {
     color: white;
 }
 
+.search-people {
+    position: absolute;
+    right: 20px;
+}
+
 .heading-title {
     font-size: 32pt;
     letter-spacing: 10px;
