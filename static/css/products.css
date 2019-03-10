@@ -56,4 +56,7 @@ body {
     body {
         text-align: center;
     }
+    .image-column {
+        width: 100%;
+    }
 }

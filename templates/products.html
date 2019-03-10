@@ -38,8 +38,8 @@
 
     {% for i in smartphone_brand %}
     <div class="row product-row">
-        <div class="col-3 col-sm-0 col-xs-0"></div>
-        <div class="col-3 col-sm-12 col-xs-12 image-column text-center">
+        <div class="col-lg-3 col-sm-0 col-xs-0"></div>
+        <div class="col-lg-3 col-sm-12 col-xs-12 image-column text-center">
             <a href="{% url 'products:product' i.name %}"><img src="{{ i.image.url }}" class="product-images img-fluid"></a>
         </div>
         <div class="col-lg-3 col-sm-12 col-md-12 name-column">
@@ -73,7 +73,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-3 col-sm-0 col-xs-0"></div>
+        <div class="col-lg-3 col-sm-0 col-xs-0"></div>
     </div><br> {% endfor %}
 
 
