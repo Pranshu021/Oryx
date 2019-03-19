@@ -23,7 +23,6 @@ def LoginView(request):
             forgot_user = User.objects.filter(email__exact=email_address)
             if forgot_user:
                 random_code = random.randint(1000, 9999)
-                print(random_code)
                 forgot_user_obj = UserInfo.objects.get(Userinfo=forgot_user[0])
                 forgot_user_obj.code = random_code 
                 forgot_user_obj.save()
