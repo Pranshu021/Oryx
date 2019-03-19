@@ -5,6 +5,13 @@ import boto3
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'oryxrating@gmail.com'
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
+
 
 AWS_STORAGE_BUCKET_NAME = 'oryxrating'
 AWS_S3_CUSTOM_DOMAIN = 's3.ap-south-1.amazonaws.com/%s' % AWS_STORAGE_BUCKET_NAME
