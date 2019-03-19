@@ -78,3 +78,20 @@ def ChangePasswordView(request):
         return redirect('home:home')
 
     return render(request, 'change_password.html')
+
+def ForgotPasswordView(request, email_address):
+    if request.method == 'POST':
+        code = request.POST.get('code')
+        new_password = request.POST.get('password')
+        user = User.objects.get(email__exact=email_address)
+        user_obj = UserInfo.objects.get(Userinfo=user)
+        if int(code) == int(user_obj.code):
+            user.set_password(new_password)
+            user.save()
+            user_obj.code = 0
+            user_obj.save()
+            return redirect('login:login')
+        else:
+            code_error = "Invalid Code"
+            return render(request, 'forgot_password.html', {'code_error': code_error})
+    return render(request, 'forgot_password.html')
