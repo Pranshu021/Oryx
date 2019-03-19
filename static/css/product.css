@@ -165,4 +165,7 @@ html {
     .smartphone-info {
         padding-top: 30px;
     }
+    .search-people {
+        position: static;
+    }
 }

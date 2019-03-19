@@ -15,8 +15,32 @@ def LoginView(request):
 
     else:
         users = User()
+        if request.method == 'POST' and 'forgot-hiddenfield' in request.POST:
+            email_address = request.POST.get('emailid')
+            forgot_user_obj = UserInfo()
+            forgot_user = User.objects.filter(email__exact=email_address)
+            if forgot_user:
+                random_code = random.randint(1000, 9999)
+                print(random_code)
+                forgot_user_obj = UserInfo.objects.get(Userinfo=forgot_user[0])
+                forgot_user_obj.code = random_code 
+                forgot_user_obj.save()
+                send_mail(
+                'Oryx - Reset Password',
+                'Your Code for Resetting Password is : ' + ' ' + str(random_code),
+                'oryxrating@gmail.com',
+                [email_address],
+                fail_silently=False,
+                )
 
-        if request.method == 'POST':
+                return redirect(reverse('profile:forgot_password', args=(email_address,)))
+
+            else:
+                print("User not found")
+                forgot_error="There is no such Email address registered"
+                return render(request, 'login.html', {'forgot_error': forgot_error})
+
+        if request.method == 'POST' and 'login-hiddenfield' in request.POST:
             username = request.POST.get('username')
             password = request.POST.get('password')
             user = authenticate(username=username, password=password)
