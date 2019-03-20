@@ -100,7 +100,7 @@
                     <p class="text"><b><u>Products Rated : </u></b></p>
                 </div>
                 <div class="col-6 info-text">
-                    {% for products in user_info %} {% if products.has_written %}
+                    {% for products in user_info %} {% if products.has_written is True %}
                     <span class="info-text products-name">{{ products.product }} | </span> {% endif %} {% endfor %}
                 </div>
             </div>
