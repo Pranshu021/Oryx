@@ -15,6 +15,11 @@
               </button>
             </div>
             <div class="modal-body">
+                <div class="error-row">
+                    {% if forgot_error %}
+                    <p>No such Email address is registered</p>
+                    {% endif %}
+                </div>
                 <form class="form-horizontal" method="POST">
                     {% csrf_token %}
                     <p id="modal-text"><input type="text" placeholder="Enter your Email address" name="emailid" class="form-control"></p>
