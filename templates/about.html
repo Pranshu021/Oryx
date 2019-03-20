@@ -29,7 +29,7 @@
     {% csrf_token %}
     <input class="form-control mr-sm-2" type="search" placeholder="Search People" id="people-search" name="people-search">
     <input type="hidden" name="people-hiddenfield">
-    <input type="submit" class="btn btn-outline-success my-2 my-sm-0" value="Search">
+    <input type="submit" class="btn btn-outline-success my-2 my-sm-0" value="Search" onclick="return StringCheck()">
 </form>
 {% endif %} {% endblock navbar-items %} {% block body %}
 <div class="container-fluid">
@@ -52,5 +52,15 @@
     </div>
 
 </div>
+<script>
+    function StringCheck() {
+        if (document.getElementById('people-search').value.length == 0) {
+            document.getElementById('people-search').style.border = '2px solid red';
+            document.getElementById('people-search').focus
+            return false;
+        }
+        return true;
+    }
+</script>
 
 {% endblock body %}

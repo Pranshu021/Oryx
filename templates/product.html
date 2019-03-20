@@ -19,7 +19,7 @@
     {% csrf_token %}
     <input class="form-control mr-sm-2" type="search" placeholder="Search People" id="people-search" name="people-search">
     <input type="hidden" name="people-hiddenfield">
-    <input type="submit" class="btn btn-outline-success my-2 my-sm-0" value="Search">
+    <input type="submit" class="btn btn-outline-success my-2 my-sm-0" value="Search" onclick="return StringCheck()">
 </form>
 {% endblock navbar-items %}{% block body %}
 
@@ -470,6 +470,15 @@
 
         if (document.getElementById("3").checked == true && document.getElementById("6").checked == true) {
             document.getElementById("comments_error").innerHTML = "You cannot select both Facing Issues and Not Facing Issues"
+            return false;
+        }
+        return true;
+    }
+
+    function StringCheck() {
+        if (document.getElementById('people-search').value.length == 0) {
+            document.getElementById('people-search').style.border = '2px solid red';
+            document.getElementById('people-search').focus
             return false;
         }
         return true;
