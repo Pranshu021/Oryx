@@ -424,8 +424,6 @@
     var total_ratings = (Number(performance_slider.value) + Number(design_slider.value) + Number(camera_slider.value) + Number(features_slider.value) + Number(sound_slider.value)) / 5
     document.getElementById("total_ratings").innerHTML = total_ratings
 
-
-    // Update the current slider value (each time you drag the slider handle)
     performance_slider.oninput = function() {
         document.getElementById("performance_ratings").innerHTML = this.value;
         var total_ratings = (Number(performance_slider.value) + Number(design_slider.value) + Number(camera_slider.value) + Number(features_slider.value) + Number(sound_slider.value)) / 5

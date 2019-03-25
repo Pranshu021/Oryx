@@ -49,4 +49,7 @@ body {
     .search-people {
         position: static;
     }
+    .dp-column {
+        text-align: center;
+    }
 }
