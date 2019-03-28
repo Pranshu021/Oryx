@@ -1,4 +1,4 @@
-{% extends 'base.html' %} {% load staticfiles %} {% block title %} Oryx | Users {% endblock title %} {% block head %}
+{% extends 'base.html' %} {% load staticfiles %} {% block title %} Products {% endblock title %} {% block head %}
 <link href="https://fonts.googleapis.com/css?family=Arvo" rel="stylesheet">
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link rel="stylesheet" href="{% static 'css/users.css' %}"> {% endblock head %}{% if user.is_authenticated %} {% block brand-icon %}
@@ -21,7 +21,7 @@
     {% csrf_token %}
     <input class="form-control mr-sm-2" type="search" placeholder="Search People" id="people-search" name="people-search">
     <input type="hidden" name="people-hiddenfield">
-    <input type="submit" class="btn btn-outline-success my-2 my-sm-0" value="Search" onclick="return StringCheck()">
+    <input type="submit" class="btn btn-outline-success my-2 my-sm-0" value="Search">
 </form>
 {% endblock navbar-items %}{% block body %}
 <div class="container-fluid full-container">
@@ -40,12 +40,18 @@
     {% endif %} {% for user in user_list %}
     <hr>
     <div class="row people-row p-2">
-        <div class="col-lg-5"></div>
-        <div class="col-lg-1 dp-column">
+        <div class="col-4"></div>
+        <div class="col-4 dp-column">
             {% if user.info.profile_pic %}
             <img src="{{ user.info.profile_pic.url }}" alt="Profile Pic" class="dp"> {% else %}
             <i class="material-icons icon-image">person</i><br> {% endif %}
         </div>
+        <div class="col-4"></div>
+
+    </div>
+
+    <div class="people-row row">
+        <div class="col-lg-4"></div>
         <div class="col-lg-4">
             <a href="{% url 'profile:profile' user.username %}" class="user-info-text">{{ user.username }}</a>
             <p>Email : {{ user.email }}</p>
@@ -56,19 +62,6 @@
         <div class="col-lg-4"></div>
     </div>
     <hr> {% endfor %}
-
 </div>
-
-<script>
-    function StringCheck() {
-        if (document.getElementById('people-search').value.length == 0) {
-            document.getElementById('people-search').style.border = '2px solid red';
-            document.getElementById('people-search').focus
-            return false;
-        }
-        return true;
-    }
-</script>
-
 
 {% endblock body %}
