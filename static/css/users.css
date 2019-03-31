@@ -45,4 +45,7 @@ body {
     body {
         text-align: center;
     }
+    .search-people {
+        position: static;
+    }
 }
