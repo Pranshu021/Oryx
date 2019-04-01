@@ -65,7 +65,7 @@ CSRF_COOKIE_SECURE = True
 ALLOWED_HOSTS = [
     '127.0.0.1',
     'oryxrating.herokuapp.com',
-    'oryxrating.com',
+    'www.oryxrating.com',
 ]
 
 
