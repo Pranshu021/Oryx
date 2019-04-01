@@ -54,3 +54,10 @@ html {
 .error-row {
     color: red;
 }
+
+@media screen and (max-width: 500px) {
+    .oryx-heading {
+        font-size: 40pt;
+        font-family: 'Pacifico', cursive;
+    }
+}

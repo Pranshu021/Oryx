@@ -43,4 +43,8 @@ html {
     .search-people {
         position: static;
     }
+    .oryx-heading {
+        font-size: 40pt;
+        font-family: 'Pacifico', cursive;
+    }
 }

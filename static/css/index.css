@@ -64,4 +64,8 @@ html {
     .main-container {
         height: auto;
     }
+    .oryx-heading {
+        font-size: 40pt;
+        font-family: 'Pacifico', cursive;
+    }
 }
