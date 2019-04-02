@@ -1,4 +1,4 @@
-{% extends 'base.html' %} {% load staticfiles %} {% block title %} Oryx &nbsp; | &nbsp; Home {% endblock title %} {% block head %}
+{% extends 'base.html' %} {% load staticfiles %} {% block title %} OryxRating &nbsp; | &nbsp; Home {% endblock title %} {% block head %}
 <link href="https://fonts.googleapis.com/css?family=Arvo" rel="stylesheet">
 <link rel="stylesheet" href="{% static 'css/home.css' %}"> {% endblock head %}{% if user.is_authenticated %} {% block brand-icon %}
 <a href="{% url 'home:home' %}" class="navbar-brand"><img src="{% static 'OryxLogo2.png' %}" class="logo" width=27 height=27>

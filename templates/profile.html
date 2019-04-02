@@ -1,4 +1,4 @@
-{% extends 'base.html' %} {% load staticfiles %} {% block title %} Oryx &nbsp; | &nbsp; Profile {% endblock title %} {% block head %}
+{% extends 'base.html' %} {% load staticfiles %} {% block title %} OryxRating &nbsp; | &nbsp; Profile {% endblock title %} {% block head %}
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link href="https://fonts.googleapis.com/css?family=Patrick+Hand" rel="stylesheet">
 <link rel="stylesheet" href="{% static 'css/profile.css' %}"> {% endblock head %} {% block brand-icon %}
@@ -107,7 +107,7 @@
 
         </div>
         <div class="col-md-6 col-xs-12 col-sm-12 p-5 text-left">
-            <b><h1 class="comments-heading">Comments</h1></b> {% for j in user_info %}
+            <b><h1 class="comments-heading">Comments and Ratings</h1></b> {% for j in user_info %}
             <p><a href="{% url 'products:product' j.product %}" class="info-text btn btn-outline-danger">{{ j.product }}  </a>
                 <span class="info-text left">{{ j.about }}</span></p>
             <hr> {% endfor %}

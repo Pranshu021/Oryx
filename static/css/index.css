@@ -56,7 +56,7 @@ html {
     letter-spacing: 3px;
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 768px) {
     .description-row {
         padding-right: 0px;
         padding-left: 0px;
@@ -64,7 +64,7 @@ html {
     .main-container {
         height: auto;
     }
-    .oryx-heading {
+    .oryx-heading{
         font-size: 40pt;
         font-family: 'Pacifico', cursive;
     }
