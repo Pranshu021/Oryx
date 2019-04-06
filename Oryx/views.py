@@ -9,7 +9,7 @@ from productapi.models import Smartphone, Rated
 from productapi.models import Smartphone
 
 class IndexView(View):
-    template_name = 'index.html'
+    template_name = 'index2.html'
 
     def get(self, request):
         smartphones = Smartphone.objects.all().order_by('-total_ratings')
