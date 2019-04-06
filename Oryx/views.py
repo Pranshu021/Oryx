@@ -12,10 +12,14 @@ class IndexView(View):
     template_name = 'index.html'
 
     def get(self, request):
+        smartphones = Smartphone.objects.all().order_by('-total_ratings')
+        top_smartphones = []
+        for i in range(0, 6):
+            top_smartphones.append(smartphones[i])
         if request.session.get('user_id') is not None:
             return redirect(reverse('home:home',))
         else:
-            return render(request, self.template_name)
+            return render(request, self.template_name, {'smartphones': top_smartphones })
 
 class TestView(TemplateView):
     template_name = 'new.html'
