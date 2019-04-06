@@ -8,7 +8,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
 from productapi.models import Smartphone, Rated
-from profiles.models import UserInfo
+from profiles.models import UserInf
 
 class SignUpView(FormView):
     form_class = UserForm
