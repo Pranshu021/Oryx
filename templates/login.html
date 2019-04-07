@@ -17,7 +17,9 @@
             <div class="modal-body">
                 <div class="error-row">
                     {% if forgot_error %}
-                    <p>No such Email address is registered</p>
+                    <script>
+                        alert("No such email found !")
+                    </script>
                     {% endif %}
                 </div>
                 <form class="form-horizontal" method="POST">

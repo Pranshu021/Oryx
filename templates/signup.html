@@ -11,7 +11,7 @@
 {% endblock brand-icon %} {% block body %}
 <div class="container-fluid full-container">
     <div class="row container-row">
-        <div class="col-lg-12 container-column">
+        <div class="col col-lg-12 col-sm-12 container-column">
             <h1 class="text-center intro">OryxRating</h1>
         </div>
     </div>
@@ -39,7 +39,7 @@
             <div class="row text-center images-row">
 
                 {% for i in top_four %}
-                <div class="col-lg-6">
+                <div class="col-lg-6 smartphones-column">
                     <img src="{{ i.image.url }}" alt="Number One Smartphone" class="smartphone-image"><br>
                     <span class="smartphones-name">{{ i.name }}</span><br>
                     <span class="smartphones-ratings">Ratings : </span><span class="btn-danger rating-labels">{{ i.total_ratings }}</span>
