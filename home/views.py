@@ -39,7 +39,7 @@ class HomeView(TemplateView):
             product_company = product_search.split(' ')[0]
             if product_search == '':
                 error = "Please specify product name"
-                return render(request, 'home.html', {'user': request.user, 'error': error})
+                return render(request, 'index.html', {'user': request.user, 'error': error})
 
 
             
@@ -51,7 +51,7 @@ class HomeView(TemplateView):
                 return render(request, 'product_not_found.html')
 
         else:
-            return render(request, 'home.html', {'user': request.user}) 
+            return render(request, 'index.html', {'user': request.user}) 
 
         
 
