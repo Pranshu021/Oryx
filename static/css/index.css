@@ -1,71 +1,115 @@
 body,
 html {
-    height: 100%;
     background: url("../texture-background.jpg") center center fixed no-repeat;
     background-size: cover;
-    overflow-x: hidden;
-}
-
-.navbar {
-    width: 100%;
-    position: fixed;
-    z-index: 99;
-}
-
-.name-row {
-    color: white;
-    padding-top: 100px;
-    padding-bottom: 70px;
-}
-
-.main-container {
     height: 100%;
 }
 
-.oryx-heading {
-    font-size: 60pt;
-    font-family: 'Pacifico', cursive;
+.search-people {
+    position: absolute;
+    right: 10px;
 }
 
-.description-row {
-    color: white;
-    font-family: 'Pacifico', cursive;
+.dropdown {
+    margin-right: 0px;
+}
+
+.username-text {
+    text-transform: capitalize;
+}
+
+.main-container,
+.full-container {
+    min-height: 100%;
+    width: 100%;
+}
+
+.name-heading {
     font-size: 16pt;
-    letter-spacing: 3px;
-    font-family: 'Righteous', cursive;
-    padding-right: 100px;
-    padding-left: 100px;
+    letter-spacing: 5px;
+    font-family: 'Arvo', serif;
+    color: lightgreen
 }
 
-.footer-container {
-    color: #ddd;
-    background-color: rgba(32, 28, 28, 0.555);
-    text-align: center;
-    text-align: justify;
-    bottom: 0px;
+.register-links {
+    right: 0px;
 }
 
-.footer-headers {
-    text-align: center;
-    color: gray;
+.name {
+    text-transform: capitalize;
 }
 
-.footer-columns {
-    display: block;
-    font-size: 12px;
+.heading {
+    font-size: 30pt;
+    letter-spacing: 10px;
+    font-family: 'Arvo', serif;
+    color: white
+}
+
+.search-row {
+    display: flex;
+    padding-top: 10px;
+    padding-bottom: 5px;
+}
+
+input[type="text"] {
+    padding: 20px;
+}
+
+.search {
+    padding: 10px;
+    border-radius: 6px;
+    width: 100%;
+}
+
+.search-button-row {
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.search-button {
+    margin-left: -80px;
+}
+
+.search-button:nth-of-type(1) {
+    border: 20px;
+    padding: 10px;
+    margin-left: 0px;
+}
+
+.error-row {
+    color: red;
+    font-weight: 600;
+    font-size: 12pt;
+}
+
+.category-columns {
+    font-size: 14pt;
+}
+
+.info-columns {
+    font-size: 12pt;
+}
+
+.username-info {
+    text-transform: capitalize;
+}
+
+.modal-body {
+    background: rgb(218, 218, 248);
+}
+
+.profile-image {
+    border-radius: 50%;
+}
+
+.name {
+    font-family: 'Arvo', serif;
     letter-spacing: 3px;
 }
 
 @media screen and (max-width: 768px) {
-    .description-row {
-        padding-right: 0px;
-        padding-left: 0px;
-    }
-    .main-container {
-        height: auto;
-    }
-    .oryx-heading{
-        font-size: 40pt;
-        font-family: 'Pacifico', cursive;
+    .search-people {
+        position: static;
     }
 }

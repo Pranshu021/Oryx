@@ -7,14 +7,19 @@ from .forms import AboutTheProductForm
 from itertools import chain
 import os, re
 from django.shortcuts import redirect, reverse
+from django.contrib.auth import login, authenticate
 
-@login_required(login_url='login:login')
+# @login_required(login_url='login:login')
 def ProductView(request, product_search):
     user = request.user
     smartphones = Smartphone.objects.get(name=product_search)
+    smartphones_comments = Rated.objects.filter(product=smartphones, has_written=True)
+    if not user.is_authenticated:
+        print("no user")
+        return render(request, 'product.html', {'smartphones': smartphones, 'comments': smartphones_comments})
+    
     rated = Rated()
     form = AboutTheProductForm()
-    smartphones_comments = Rated.objects.filter(product=smartphones, has_written=True)
     error = "Thank you for Rating the Product"
     error2 = "Thank you for giving the Title"
     error3 = "Please Rate the Product First.."
@@ -192,7 +197,7 @@ def ProductView(request, product_search):
 
 
 
-@login_required(login_url='login:login')
+# @login_required(login_url='login:login')
 def ProductsView(request, product_search):
 
     if 'people-hiddenfield' in request.POST:

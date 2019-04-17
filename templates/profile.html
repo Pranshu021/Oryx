@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link href="https://fonts.googleapis.com/css?family=Patrick+Hand" rel="stylesheet">
 <link rel="stylesheet" href="{% static 'css/profile.css' %}"> {% endblock head %} {% block brand-icon %}
-<a href="{% url 'index' %}" class="navbar-brand"><img src="{% static 'OryxLogo2.png' %}" class="logo" width=27 height=27>
+<a href="{% url 'home:home' %}" class="navbar-brand"><img src="{% static 'OryxLogo2.png' %}" class="logo" width=27 height=27>
 </a>
 {% endblock brand-icon %} {% block navbar-items %} {% if user.is_authenticated %}
 <li class="nav-item dropdown">

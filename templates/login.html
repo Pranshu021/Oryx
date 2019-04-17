@@ -1,10 +1,18 @@
-{% extends 'base.html' %} {% load staticfiles %} {% block title %} OryxRating &nbsp; | &nbsp; Log In {% endblock title %} {% block head %}
+{% extends 'base.html' %} {% load staticfiles %} {% block title %} Oryx &nbsp; | &nbsp; Log In {% endblock title %} {% block head %}
 <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Chela+One" rel="stylesheet">
 <link rel="stylesheet" href="{% static 'css/login.css' %}"> {% endblock head %} {% block brand-icon %}
-<a href="{% url 'index' %}" class="navbar-brand"><img src="{% static 'OryxLogo2.png' %}" class="logo" width=27 height=27>
+<a href="{% url 'home:home' %}" class="navbar-brand"><img src="{% static 'OryxLogo2.png' %}" class="logo" width=27 height=27>
 </a>
-{% endblock brand-icon %} {% block body %}
+{% endblock brand-icon %} {% block navbar-items %}
+</ul>
+<ul class="navbar-nav ml-auto">
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'signup:signup' %}">Sign Up</a>
+    </li>
+</ul>
+
+{% endblock navbar-items %} {% block body %}
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -15,13 +23,6 @@
               </button>
             </div>
             <div class="modal-body">
-                <div class="error-row">
-                    {% if forgot_error %}
-                    <script>
-                        alert("No such email found !")
-                    </script>
-                    {% endif %}
-                </div>
                 <form class="form-horizontal" method="POST">
                     {% csrf_token %}
                     <p id="modal-text"><input type="text" placeholder="Enter your Email address" name="emailid" class="form-control"></p>
@@ -35,13 +36,17 @@
         </div>
     </div>
 </div>
-
 <div class="container-fluid full-container">
+    {% if forgot_error %}
+    <script>
+        alert("There is no such email address registered")
+    </script>
+    {% endif %}
 
     <div class="container intro-container">
         <div class="row container-row">
             <div class="col col-sm-12 container-column">
-                <h1 class="intro text-center">OryxRating</h1>
+                <h1 class="text-center intro">OryxRating</h1>
             </div>
         </div>
     </div>
@@ -67,7 +72,7 @@
             <div class="row field-rows">
 
                 <div class="col-lg-12 col-sm-12">
-                    <input type="text" class="textfield form-control text-center" placeholder="Email" id="username" name="username">
+                    <input type="text" class="textfield form-control text-center" placeholder="Username" id="username" name="username">
                 </div>
             </div>
 
@@ -85,10 +90,12 @@
                     <input type="submit" class="btn btn-block btn-primary" value="Log In">
                 </div>
             </div>
+
             <div class="row pt-2">
                 <div class="col-lg-12">
                     <u><a href="#" data-toggle="modal" data-target="#exampleModal">Forgot Password ?</a></u>
                 </div>
+                <p></p>
             </div>
         </form>
     </div>

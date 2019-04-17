@@ -1,0 +1,71 @@
+body,
+html {
+    height: 100%;
+    background: url("../texture-background.jpg") center center fixed no-repeat;
+    background-size: cover;
+    overflow-x: hidden;
+}
+
+.navbar {
+    width: 100%;
+    position: fixed;
+    z-index: 99;
+}
+
+.name-row {
+    color: white;
+    padding-top: 100px;
+    padding-bottom: 70px;
+}
+
+.main-container {
+    height: 100%;
+}
+
+.oryx-heading {
+    font-size: 60pt;
+    font-family: 'Pacifico', cursive;
+}
+
+.description-row {
+    color: white;
+    font-family: 'Pacifico', cursive;
+    font-size: 16pt;
+    letter-spacing: 3px;
+    font-family: 'Righteous', cursive;
+    padding-right: 100px;
+    padding-left: 100px;
+}
+
+.footer-container {
+    color: #ddd;
+    background-color: rgba(32, 28, 28, 0.555);
+    text-align: center;
+    text-align: justify;
+    bottom: 0px;
+}
+
+.footer-headers {
+    text-align: center;
+    color: gray;
+}
+
+.footer-columns {
+    display: block;
+    font-size: 12px;
+    letter-spacing: 3px;
+}
+
+@media screen and (max-width: 768px) {
+    .description-row {
+        padding-right: 0px;
+        padding-left: 0px;
+    }
+    .main-container {
+        height: auto;
+    }
+    .oryx-heading{
+        font-size: 40pt;
+        font-family: 'Pacifico', cursive;
+    }
+}

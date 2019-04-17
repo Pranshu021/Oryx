@@ -1,0 +1,64 @@
+{% extends 'base.html' %} {% load staticfiles %} {% block title %} OryxRating &nbsp; | &nbsp; Real Product Rating System {% endblock title %} {% block head %}
+<link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
+
+<script type="text/javascript">
+    function redirection() {
+        return window.location.href = "{% url 'signup:signup'%}"
+    }
+
+    function redirection2() {
+        return window.location.href = "{% url 'login:login' %}"
+    }
+</script>
+
+{% endblock head %} {% block body %}
+<div class="container-fluid main-container pb-5" id="main-container">
+    <div class="row name-row text-center">
+        <div class="col col-sm-12">
+            <h1 class="oryx-heading">OryxRating</h1>
+        </div>
+    </div>
+
+    <div class="row description-row p-5">
+        <div class="col-md-12 col-lg-12 text-center">
+            Gather the Truth about every gadget in the market by Real people and the Experts.
+        </div>
+    </div>
+
+    <div class="row buttons-row text-center pt-4 pb-4">
+        <div class="col-lg-2"></div>
+        <div class="col-sm-12 col-lg-4 col-md-6 pt-3">
+            <button class="btn btn-danger btn-lg btn-outline-success logup-buttons btn-block" onclick="return redirection()">Sign Up</a>
+        </div>
+        <div class="col-sm-12 col-lg-4 col-md-6 pt-3">
+            <button class="btn btn-danger btn-lg btn-outline-success logup-buttons btn-block" onclick="return redirection2()">Log In</button>
+        </div>
+        <div class="col-lg-2"></div>
+    </div>
+</div>
+
+{% block footer %}
+<div class="footer-container p-4">
+    <div class="row">
+        <div class="col-lg-4 col-sm-12 text-center footer-columns">
+            <h3 class="footer-headers">Info</h3>
+            <a class="footer-links" href="{% url 'about' %}">About Us</a><br>
+            <a class="footer-links" href="{% url 'contact' %}">Contact Us</a><br>
+            <a class="footer-links" href="{% url 'privacy_policy' %}">Privacy Policy</a><br>
+        </div>
+
+        <div class="col-lg-4 col-sm-12 text-center footer-columns">
+            <h3 class="footer-headers">Social links</h3>
+            <a class="footer-links" href="https://www.facebook.com/OryxRating-271955323722913/">Facebook</a><br>
+            <a class="footer-links" href="https://twitter.com/OryxRating">Twitter</a><br>
+            <a class="footer-links" href="#">Instagram</a><br>
+        </div>
+
+        <div class="col-lg-4 col-sm-12 text-center footer-columns">
+            <h3 class="footer-headers">Partners and Sponsors</h3>
+            <a class="footer-links" href="http://www.technbay.com">Technbay</a><br>
+        </div>
+    </div>
+</div>
+{% endblock footer %} {% endblock body %}

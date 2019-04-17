@@ -1,28 +1,41 @@
-{% extends 'base.html' %} {% load staticfiles %} {% block title %} OryxRating &nbsp; | &nbsp; Products {% endblock title %} {% block head %}
+{% extends 'base.html' %} {% load staticfiles %} {% block title %} Oryx &nbsp; | &nbsp; Products {% endblock title %} {% block head %}
 <link href="https://fonts.googleapis.com/css?family=Arvo" rel="stylesheet">
 <link rel="stylesheet" href="{% static 'css/products.css' %}"> {% endblock head %}{% if user.is_authenticated %} {% block brand-icon %}
 <a href="{% url 'home:home' %}" class="navbar-brand"><img src="{% static 'OryxLogo2.png' %}" class="logo" width=27 height=27>
-</a> {% endblock brand-icon %} {% endif %} {% block navbar-items %}
-<li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Account
-                </a>
-    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-        <a class="dropdown-item" href="{% url 'profile:profile' user.username %}">Profile</a>
-        <a class="dropdown-item" href="#">Change Password</a>
-    </div>
-</li>
-
+</a> {% endblock brand-icon %} {% endif %} {% block navbar-items %} {% if user.is_authenticated %}
 <li class="nav-item">
     <a class="nav-link" href="{% url 'logout' %}">Log Out</a>
 </li>
-<form class="form-inline my-2 my-lg-0 search-people" method="POST">
-    {% csrf_token %}
-    <input class="form-control mr-sm-2" type="search" placeholder="Search People" id="people-search" name="people-search">
-    <input type="hidden" name="people-hiddenfield">
-    <input type="submit" class="btn btn-outline-success my-2 my-sm-0" value="Search" onclick="return StringCheck()">
-</form>
-{% endblock navbar-items %}{% block body %}
+<li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <span class="username-text">{{ user.username }}</span>
+    </a>
+    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <a class="dropdown-item" href="{% url 'profile:profile' user.username %}">Profile</a>
+        <a class="dropdown-item" href="{% url 'profile:change_password' %}">Change Password</a>
+    </div>
+</li>
+<li class="nav-item">
+    <form class="form-inline my-2 my-lg-0 search-people" method="POST">
+        {% csrf_token %}
+        <input class="form-control mr-sm-2" type="search" placeholder="Search People" id="people-search" name="people-search">
+        <input type="hidden" name="people-hiddenfield">
+        <input type="submit" class="btn btn-success search-button" value="Search">
+    </form>
+</li>
+
+{% else %}
+</ul>
+<ul class="navbar-nav register-links">
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'login:login' %}">Log In</a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'signup:signup' %}">Sign Up</a>
+    </li>
+</ul>
+{% endif %} {% endblock navbar-items %}{% block body %}
 
 <div class="container-fluid full-container">
     <div class="row heading-row text-center p-5">
@@ -39,7 +52,7 @@
     {% for i in smartphone_brand %}
     <div class="row product-row">
         <div class="col-lg-3 col-md-3"></div>
-        <div class="col-12 col-lg-3 col-md-3 image-column text-center">
+        <div class="col-12 col-lg-5 col-md-5 image-column text-center">
             <a href="{% url 'products:product' i.name %}"><img src="{{ i.image.url }}" class="product-images img-fluid"></a>
         </div>
         <div class="col-lg-3 col-sm-12 col-md-12 name-column">
@@ -58,38 +71,26 @@
             </div>
             <div class="row">
                 <div class="col-lg-12 col-sm-12">
-                    <p>Performance : {{ i.performance_ratings }}</p>
+                    <p>Recommended By : {{ i.recommend }}</p>
                 </div>
 
             </div>
             <div class="row">
                 <div class="col-lg-12 col-sm-12">
-                    <p>Camera {{ i.camera_ratings }}</p>
+                    <p>No. of Users Rated : {{ i.no_of_users }}</p>
                 </div>
             </div>
             <div class="row">
                 <div class="col-lg-12 col-sm-12">
-                    <p>Features : {{ i.features_ratings }}</p>
+                    <p>Not Recommended By : {{ i.not_recommend }}</p>
                 </div>
             </div>
         </div>
-        <div class="col-lg-3 col-md-3"></div>
+        <div class="col-md-3 col-lg-3"></div>
     </div><br> {% endfor %}
 
 
 </div>
-
-<script>
-    function StringCheck() {
-        if (document.getElementById('people-search').value.length == 0) {
-            document.getElementById('people-search').style.border = '2px solid red';
-            document.getElementById('people-search').focus
-            return false;
-        }
-        return true;
-    }
-</script>
-
 
 
 {% endblock body %}

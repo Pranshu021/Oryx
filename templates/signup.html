@@ -1,4 +1,4 @@
-{% extends 'base.html' %} {% load staticfiles %} {% block title %} OryxRating &nbsp; | &nbsp; Sign Up {% endblock title %} {% block head %}
+{% extends 'base.html' %} {% load staticfiles %} {% block title %} Oryx &nbsp; | &nbsp; Sign Up {% endblock title %} {% block head %}
 <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Chela+One" rel="stylesheet">
 <link rel="stylesheet" href="{% static 'css/signup.css' %}">
@@ -6,12 +6,20 @@
 </script>
 
 {% endblock head %} {% block brand-icon %}
-<a href="{% url 'index' %}" class="navbar-brand"><img src="{% static 'OryxLogo2.png' %}" class="logo" width=27 height=27>
+<a href="{% url 'home:home' %}" class="navbar-brand"><img src="{% static 'OryxLogo2.png' %}" class="logo" width=27 height=27>
 </a>
-{% endblock brand-icon %} {% block body %}
+{% endblock brand-icon %} {% block navbar-items %}
+</ul>
+<ul class="navbar-nav ml-auto"></ul>
+<li class="nav-item">
+    <a class="nav-link" href="{% url 'login:login' %}">
+        Log In
+      </a>
+</li>
+{% endblock navbar-items %}{% block body %}
 <div class="container-fluid full-container">
     <div class="row container-row">
-        <div class="col col-lg-12 col-sm-12 container-column">
+        <div class="col-lg-12 container-column">
             <h1 class="text-center intro">OryxRating</h1>
         </div>
     </div>
@@ -22,7 +30,7 @@
             <div class="row text-center images-row">
 
                 {% for i in top_two %}
-                <div class="col-lg-6 col-sm-12 col-xs-12 smartphones-column">
+                <div class="col-lg-6 col-sm-12 col-xs-12">
                     <img src="{{ i.image.url }}" alt="Number One Smartphone" class="smartphone-image"><br>
                     <span class="smartphones-name">{{ i.name }}</span><br>
                     <span class="smartphones-ratings">Ratings : </span><span class="btn-danger rating-labels">{{ i.total_ratings }}</span>
@@ -39,7 +47,7 @@
             <div class="row text-center images-row">
 
                 {% for i in top_four %}
-                <div class="col-lg-6 smartphones-column">
+                <div class="col-lg-6">
                     <img src="{{ i.image.url }}" alt="Number One Smartphone" class="smartphone-image"><br>
                     <span class="smartphones-name">{{ i.name }}</span><br>
                     <span class="smartphones-ratings">Ratings : </span><span class="btn-danger rating-labels">{{ i.total_ratings }}</span>
@@ -61,6 +69,13 @@
                         <h3 class="heading">Sign Up</h3>
                     </div>
                 </div>
+                {% if error %}
+                <div class="row alert-danger text-center">
+                    <div class="col-12">
+                        <p class="errors">{{ error }}</p>
+                    </div>
+                </div>
+                {% endif %}
                 <form action="." method="POST" class="signup-form form-group">
                     {% csrf_token %} {% if form.errors %}
                     <div class="row errors-row">

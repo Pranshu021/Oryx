@@ -8,11 +8,11 @@ app_name = 'oryx'
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.IndexView.as_view(), name="index"),
+    path('', include('home.urls'), name="index"),
     path('signup/', include('signup.urls'), name="signup"),
     path('login/', include('login.urls'), name="login"),
     path('profile/', include('profiles.urls'), name="profile"),
-    path('home/', include('home.urls'), name="home"),
+    # path('home/', include('home.urls'), name="home"),
     path('products/', include('productapi.urls'), name="products"),
     path('logout/', views.LogoutView, name="logout"),
     path('test/', views.TestView, name="test"),

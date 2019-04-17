@@ -11,7 +11,7 @@ from django.contrib.auth import login, authenticate
 import re
 
 class HomeView(TemplateView):
-    template_name = 'home.html'
+    template_name = 'index.html'
     model = Smartphone
 
     def get(self, request):
@@ -19,10 +19,9 @@ class HomeView(TemplateView):
             user_session = request.session.get('user_id')
             user_info = request.user
             
-            return render(request, 'home.html', {'user': request.user})   
-            
-        else:
-            return HttpResponseRedirect(reverse('login:login'))
+            return render(request, self.template_name, {'user': request.user})   
+
+        return render(request, self.template_name, {'user': request.user})
 
             
     def post(self, request):
