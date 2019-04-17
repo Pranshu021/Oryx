@@ -30,24 +30,18 @@
             <div class="row text-center images-row">
 
                 {% for i in top_two %}
-                <div class="col-lg-6 col-sm-12 col-xs-12">
+                <div class="col-lg-6 col-sm-12 col-xs-12 smartphones-column">
                     <img src="{{ i.image.url }}" alt="Number One Smartphone" class="smartphone-image"><br>
                     <span class="smartphones-name">{{ i.name }}</span><br>
                     <span class="smartphones-ratings">Ratings : </span><span class="btn-danger rating-labels">{{ i.total_ratings }}</span>
                 </div>
                 {% endfor %}
 
-                <!-- <div class="col-lg-6">
-                    <img src="{{ best.image.url }}" alt="Number One Smartphone" class="smartphone-image">
-                </div>
-                <div class="col-lg-6">
-                    <img src="{{ best.image.url }}" alt="Number One Smartphone" class="smartphone-image">
-                </div> -->
             </div>
             <div class="row text-center images-row">
 
                 {% for i in top_four %}
-                <div class="col-lg-6">
+                <div class="col-lg-6 col-sm-12 col-xs-12 smartphones-column">
                     <img src="{{ i.image.url }}" alt="Number One Smartphone" class="smartphone-image"><br>
                     <span class="smartphones-name">{{ i.name }}</span><br>
                     <span class="smartphones-ratings">Ratings : </span><span class="btn-danger rating-labels">{{ i.total_ratings }}</span>
