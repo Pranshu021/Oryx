@@ -2,7 +2,6 @@ body,
 html {
     background: url("../texture-background.jpg") center center fixed no-repeat;
     background-size: cover;
-    height: 100%;
 }
 
 .search-people {
@@ -20,7 +19,6 @@ html {
 
 .main-container,
 .full-container {
-    height: 100%;
     width: 100%;
 }
 

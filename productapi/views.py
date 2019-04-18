@@ -204,6 +204,23 @@ def ProductsView(request, product_search):
             user_search = request.POST.get('people-search')
             print(user_search)
             return redirect(reverse('profile:users', args=(user_search,)))
+    
+    if 'product-hidden' in request.POST:           
+        product = Smartphone()
+    
+        product_search = request.POST.get('product_search').strip(' ').lower()
+        product_search = re.sub(' +', ' ',product_search)
+        product_company = product_search.split(' ')[0]
+        if product_search == '':
+            error = "Please specify product name"
+            return render(request, 'index.html', {'user': request.user, 'error': error})
+
+        if Smartphone.objects.filter(name__contains=product_search):
+            return redirect(reverse('products:products_brand', args=(product_search,)))
+        else:
+            if Smartphone.objects.filter(name__contains=product_company):
+                return redirect(reverse('products:products_brand', args=(product_company,)))
+            return render(request, 'product_not_found.html')
             
     smartphone_brand = Smartphone.objects.filter(name__exact = product_search)
     if not smartphone_brand:
