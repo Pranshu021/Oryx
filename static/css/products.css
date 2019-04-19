@@ -1,5 +1,7 @@
 body {
     background-color: rgb(40, 46, 52);
+    width: 100%;
+    overflow-x: hidden;
 }
 
 .full-container {
@@ -62,5 +64,8 @@ body {
     .search-people {
         position: static;
         text-align: none;
+    }
+    .search-button {
+        width: 100%;
     }
 }

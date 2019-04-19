@@ -40,26 +40,25 @@
 <div class="container-fluid full-container">
     <div class="row searchbar-row">
         <div class="col-lg-4">
-
         </div>
         <div class="col-12 col-lg-4 col-md-4 searchbar-column pt-3">
             <form method="POST" class="form-inline productsearch-form">
                 {% csrf_token %}
                 <input type="text" class="form-control textfield my-2" id="textfield" name="product_search" size="30" placeholder="Search Other Products..">
                 <input type="submit" class="btn btn-success m-2" value="Search" class="search-button">
-                <input type="hidden" name="product-hidden">
+                <input type="hidden" name="product-hidden ">
             </form>
         </div>
-        <div class="col-lg-4">
+        <div class="col-lg-4 ">
 
         </div>
 
     </div>
-    <div class="row heading-row text-center p-5">
-        <div class="col-lg-12 col-sm-12">
-            <h1 class="heading">Search Results</h1>
+    <div class="row heading-row text-center p-5 ">
+        <div class="col-lg-12 col-sm-12 ">
+            <h1 class="heading ">Search Results</h1>
             {% if not_found_error %}
-            <p class="error">{{ not_found_error }} {{ product_company }}</p>
+            <p class="error ">{{ not_found_error }} {{ product_company }}</p>
             {% endif %}
 
         </div>
@@ -67,43 +66,43 @@
 
 
     {% for i in smartphone_brand %}
-    <div class="row product-row">
-        <div class="col-lg-3 col-md-3"></div>
-        <div class="col-12 col-lg-3 col-md-5 image-column text-center">
-            <a href="{% url 'products:product' i.name %}"><img src="{{ i.image.url }}" class="product-images img-fluid"></a>
+    <div class="row product-row ">
+        <div class="col-lg-3 col-md-3 "></div>
+        <div class="col-12 col-lg-3 col-md-5 image-column text-center ">
+            <a href="{% url 'products:product' i.name %} "><img src="{{ i.image.url }} " class="product-images img-fluid "></a>
         </div>
-        <div class="col-lg-4 col-sm-12 col-md-12 name-column">
-            <div class="row">
-                <div class="col-12">
-                    <a href="{% url 'products:product' i.name %}">
-                        <h3><span class="brand-name">{{ i.name }}</span></h3>
+        <div class="col-lg-4 col-sm-12 col-md-12 name-column ">
+            <div class="row ">
+                <div class="col-12 ">
+                    <a href="{% url 'products:product' i.name %} ">
+                        <h3><span class="brand-name ">{{ i.name }}</span></h3>
                     </a>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-lg-12 col-sm-12">
+            <div class="row ">
+                <div class="col-lg-12 col-sm-12 ">
                     <p>Ratings : {{ i.total_ratings }}</p>
                 </div>
 
             </div>
-            <div class="row">
-                <div class="col-lg-12 col-sm-12">
+            <div class="row ">
+                <div class="col-lg-12 col-sm-12 ">
                     <p>Recommended By : {{ i.recommend }}</p>
                 </div>
 
             </div>
-            <div class="row">
-                <div class="col-lg-12 col-sm-12">
+            <div class="row ">
+                <div class="col-lg-12 col-sm-12 ">
                     <p>No. of Users Rated : {{ i.no_of_users }}</p>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-lg-12 col-sm-12">
+            <div class="row ">
+                <div class="col-lg-12 col-sm-12 ">
                     <p>Not Recommended By : {{ i.not_recommend }}</p>
                 </div>
             </div>
         </div>
-        <div class="col-md-2 col-lg-3"></div>
+        <div class="col-md-2 col-lg-3 "></div>
     </div><br> {% endfor %}
 
 
