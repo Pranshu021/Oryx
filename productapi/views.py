@@ -210,9 +210,6 @@ def ProductsView(request, product_search):
         product_search = request.POST.get('product_search').strip(' ').lower()
         product_search = re.sub(' +', ' ',product_search)
         product_company = product_search.split(' ')[0]
-        if product_search == '':
-            error = "Please specify product name"
-            return render(request, 'index.html', {'user': request.user, 'error': error})
 
         if Smartphone.objects.filter(name__contains=product_search):
             return redirect(reverse('products:products_brand', args=(product_search,)))

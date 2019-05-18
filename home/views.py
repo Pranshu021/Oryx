@@ -37,12 +37,7 @@ class HomeView(TemplateView):
             product_search = request.POST.get('product_search').strip(' ').lower()
             product_search = re.sub(' +', ' ',product_search)
             product_company = product_search.split(' ')[0]
-            if product_search == '':
-                error = "Please specify product name"
-                return render(request, 'index.html', {'user': request.user, 'error': error})
 
-
-            
             if self.model.objects.filter(name__contains=product_search):
                 return HttpResponseRedirect(reverse('products:products_brand', args=(product_search,)))
             else:
