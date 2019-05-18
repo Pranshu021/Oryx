@@ -205,7 +205,7 @@ def ProductsView(request, product_search):
             print(user_search)
             return redirect(reverse('profile:users', args=(user_search,)))
     
-    if 'product-hidden' in request.POST:           
+    if 'product-hidden' in request.POST:  
         product = Smartphone()
         product_search = request.POST.get('product_search').strip(' ').lower()
         product_search = re.sub(' +', ' ',product_search)
@@ -216,23 +216,33 @@ def ProductsView(request, product_search):
         else:
             if Smartphone.objects.filter(name__contains=product_company):
                 return redirect(reverse('products:products_brand', args=(product_company,)))
-            return render(request, 'product_not_found.html')
+                return render(request, 'product_not_found.html')         
+    #     product = Smartphone()
+    #     product_search = request.POST.get('product_search').strip(' ').lower()
+    #     product_search = re.sub(' +', ' ',product_search)
+    #     product_company = product_search.split(' ')[0]
+
+    #     if Smartphone.objects.filter(name__contains=product_search):
+    #         return redirect(reverse('products:products_brand', args=(product_search,)))
+    #     else:
+    #         if Smartphone.objects.filter(name__contains=product_company):
+    #             return redirect(reverse('products:products_brand', args=(product_company,)))
+    #         return render(request, 'product_not_found.html')
             
-    smartphone_brand = Smartphone.objects.filter(name__exact = product_search)
-    if not smartphone_brand:
-        product_company = product_search.split(' ')[0]
-        other_products = (Smartphone.objects.filter(name__startswith = product_company))
-        not_found_error = "We could not find the Exact Product but there are other products from "
-        return render(request, 'products.html', {'smartphone_brand': other_products, 'not_found_error': not_found_error, 'product_company': product_company})
+    # smartphone_brand = Smartphone.objects.filter(name__exact = product_search)
+    # if not smartphone_brand:
+    #     product_company = product_search.split(' ')[0]
+    #     other_products = (Smartphone.objects.filter(name__startswith = product_company))
+    #     not_found_error = "We could not find the Exact Product but there are other products from "
+    #     return render(request, 'products.html', {'smartphone_brand': other_products, 'not_found_error': not_found_error, 'product_company': product_company})
 
-    else:
-        print
-        product_company = product_search.split(' ')[0]
-        print(product_company)
-        other_products = (Smartphone.objects.filter(name__startswith = product_company).exclude(name__exact = product_search))
+    # else:
+    #     product_company = product_search.split(' ')[0]
+    #     print(product_company)
+    #     other_products = (Smartphone.objects.filter(name__startswith = product_company).exclude(name__exact = product_search))
 
-        all_product_list = list(chain(smartphone_brand, other_products))
-        return render(request, 'products.html', {'smartphone_brand': all_product_list})
+    #     all_product_list = list(chain(smartphone_brand, other_products))
+    #     return render(request, 'products.html', {'smartphone_brand': all_product_list})
 
 
 class ProductNotFoundView(TemplateView):
