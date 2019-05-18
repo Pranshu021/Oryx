@@ -1,14 +1,8 @@
 {% extends 'base.html' %} {% load staticfiles %} {% block title %} OryxRating &nbsp; | &nbsp; About Us {% endblock title %} {% block head %}
 <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Handlee" rel="stylesheet">
-<link href="{% static 'css/about.css' %}" rel="stylesheet"> {% endblock head %}{% block brand-icon %} {% if user.is_authenticated %}
-
+<link href="{% static 'css/about.css' %}" rel="stylesheet"> {% endblock head %}{% block brand-icon %}
 <a href="{% url 'home:home' %}" class="navbar-brand"><img src="{% static 'OryxLogo2.png' %}" class="logo" width=27 height=27>
-</a>
-
-{% else %}
-
-<a href="{% url 'index' %}" class="navbar-brand"><img src="{% static 'OryxLogo2.png' %}" class="logo" width=27 height=27>
 </a>
 
 {% endif %} {% endblock brand-icon %} {% block navbar-items %} {% if user.is_authenticated %}
