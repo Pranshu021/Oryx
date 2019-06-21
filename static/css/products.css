@@ -1,7 +1,10 @@
 body {
-    background-color: rgb(40, 46, 52);
+    /* background-color: rgb(40, 46, 52);
     width: 100%;
-    overflow-x: hidden;
+    overflow-x: hidden; */
+    background: url("../white_background.jpg") center center fixed no-repeat;
+    background-size: cover;
+    height: 100%;
 }
 
 .full-container {
@@ -17,14 +20,14 @@ body {
     font-size: 14pt;
     letter-spacing: 3px;
     font-family: 'Arvo', serif;
-    color: white
+    color: black;
 }
 
 .heading {
     font-size: 32pt;
     letter-spacing: 10px;
     font-family: 'Arvo', serif;
-    color: lightgreen
+    color: darkred;
 }
 
 .brand-name {
@@ -32,12 +35,13 @@ body {
 }
 
 .name-column {
-    color: white;
+    font-weight: 600;
+    color: black;
     padding: 3px;
 }
 
 .image-column {
-    color: white;
+    color: black;
     padding: 3px;
     width: 200px;
     height: 200px;
@@ -50,7 +54,7 @@ body {
 }
 
 .error {
-    color: white;
+    color: red;
     font-size: 12pt;
 }
 

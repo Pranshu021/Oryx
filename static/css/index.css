@@ -1,7 +1,8 @@
 body,
 html {
-    background: url("../texture-background.jpg") center center fixed no-repeat;
+    background: url("../white_background.jpg") center center fixed no-repeat;
     background-size: cover;
+    height: 100%;
 }
 
 .search-people {
@@ -26,7 +27,7 @@ html {
     font-size: 16pt;
     letter-spacing: 5px;
     font-family: 'Arvo', serif;
-    color: lightgreen
+    color: darkgreen;
 }
 
 .register-links {
@@ -41,7 +42,7 @@ html {
     font-size: 30pt;
     letter-spacing: 10px;
     font-family: 'Arvo', serif;
-    color: white
+    color: black;
 }
 
 .search-row {
