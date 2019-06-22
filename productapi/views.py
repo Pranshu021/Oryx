@@ -191,11 +191,11 @@ def ProductView(request, product_search):
 
 
 
-# @login_required(login_url='login:login')
 def ProductsView(request, product_search):
-
+    
     if 'people-hiddenfield' in request.POST:
             user_search = request.POST.get('people-search')
+            print(user_search)
             return redirect(reverse('profile:users', args=(user_search,)))
 
     if 'product-hidden' in request.POST:           
@@ -224,11 +224,11 @@ def ProductsView(request, product_search):
 
     else:
         product_company = product_search.split(' ')[0]
+        print(product_company)
         other_products = (Smartphone.objects.filter(name__startswith = product_company).exclude(name__exact = product_search))
 
         all_product_list = list(chain(smartphone_brand, other_products))
         return render(request, 'products.html', {'smartphone_brand': all_product_list})
-
 
 class ProductNotFoundView(TemplateView):
     template_name = 'product_not_found.html'
