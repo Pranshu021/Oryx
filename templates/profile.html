@@ -100,17 +100,17 @@
                     <p class="text"><b><u>Products Rated : </u></b></p>
                 </div>
                 <div class="col-6 info-text">
-                    {% for products in user_info %} {% if products.has_written is True %}
-                    <span class="info-text products-name">{{ products.product }} | </span> {% endif %} {% endfor %}
+                    {% for products in user_info %}
+                    <span class="info-text products-name">{{ products.product }} | </span> {% endfor %}
                 </div>
             </div>
 
         </div>
         <div class="col-md-6 col-xs-12 col-sm-12 p-5 text-left">
-            <b><h1 class="comments-heading">Comments and Ratings</h1></b> {% for j in user_info %}
+            <b><h1 class="comments-heading">Comments and Ratings</h1></b> {% for j in user_info %} {% if j.has_written is True %}
             <p><a href="{% url 'products:product' j.product %}" class="info-text btn btn-outline-danger">{{ j.product }}  </a>
                 <span class="info-text left">{{ j.about }}</span></p>
-            <hr> {% endfor %}
+            <hr>{% endif %} {% endfor %}
 
         </div>
 

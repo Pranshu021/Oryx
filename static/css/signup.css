@@ -1,6 +1,7 @@
 body,
 html {
-    background-color: #282E34;
+    background: url("../white_background.jpg") center center fixed no-repeat;
+    background-size: cover;
     height: 100%;
     width: 100%;
     overflow-x: hidden;
@@ -13,7 +14,7 @@ html {
 
 .container-row {
     padding: 20px;
-    color: white;
+    color: black;
 }
 
 .intro {
@@ -30,7 +31,7 @@ html {
 }
 
 .left-column-heading {
-    color: white;
+    color: black;
     font-weight: 600;
 }
 
@@ -47,7 +48,7 @@ html {
 
 .smartphones-name,
 .smartphones-ratings {
-    color: white;
+    color: black;
     font-size: 600;
     text-transform: capitalize;
 }

@@ -1,5 +1,6 @@
 body {
-    background-color: rgb(40, 46, 52);
+    background: url("../white_background.jpg") center center fixed no-repeat;
+    background-size: cover;
     width: 100%;
 }
 
@@ -16,8 +17,8 @@ body {
 
 .icon-image {
     font-size: 72pt;
-    color: white;
-    border: 3px solid white;
+    color: black;
+    border: 3px solid black;
     border-radius: 50%;
     padding: 20px;
 }
@@ -35,7 +36,7 @@ body {
 }
 
 .info-text {
-    color: white;
+    color: black;
     text-transform: capitalize;
 }
 
@@ -45,7 +46,7 @@ body {
 }
 
 .comments-heading {
-    color: white;
+    color: black;
 }
 
 .profile-image-column {

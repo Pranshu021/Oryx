@@ -1,7 +1,7 @@
 body,
 html {
     height: 100%;
-    background: url("../texture-background.jpg") center center fixed no-repeat;
+    background: url("../white_background.jpg") center center fixed no-repeat;
     background-size: cover;
     overflow-x: hidden;
 }
@@ -18,7 +18,7 @@ html {
 }
 
 .name-row {
-    color: white;
+    color: black;
     padding-top: 100px;
     padding-bottom: 70px;
 }
@@ -29,20 +29,10 @@ html {
 }
 
 .about-us {
-    color: white;
+    color: black;
     font-family: 'Handlee', cursive;
     font-size: 16pt;
     letter-spacing: 2px;
-}
-
-.about-icons {
-    font-size: 40pt;
-    color: #39FF14
-}
-
-.icon-description {
-    font-size: 16pt;
-    color: #39FF14;
 }
 
 .about-row {

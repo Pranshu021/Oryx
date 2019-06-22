@@ -1,6 +1,6 @@
 body,
 html {
-    background: url("../texture-background.jpg") center center fixed no-repeat;
+    background: url("../white_background.jpg") center center fixed no-repeat;
     background-size: cover;
     height: 100%;
     width: 100%;
@@ -21,7 +21,7 @@ html {
 }
 
 .heading {
-    color: white;
+    color: black;
     font-size: 48pt;
     font-weight: 600;
     letter-spacing: 5px;
@@ -29,10 +29,12 @@ html {
 }
 
 .contact-column {
-    background: rgb(31, 29, 29);
+    /* background: rgb(31, 29, 29); */
+    background: lightgray;
+    border: 5px solid black;
     border-radius: 5px;
     padding: 5%;
-    color: white;
+    color: black;
 }
 
 .info-row {

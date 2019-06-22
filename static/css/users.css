@@ -1,13 +1,14 @@
 body {
-    background-color: rgb(40, 46, 52);
-    color: white;
+    background: url("../white_background.jpg") center center fixed no-repeat;
+    background-size: cover;
+    color: black;
 }
 
 .heading-title {
     font-size: 32pt;
     letter-spacing: 10px;
     font-family: 'Arvo', serif;
-    color: lightgreen
+    color: lightblue;
 }
 
 .people-row {
@@ -32,7 +33,7 @@ body {
 
 .icon-image {
     font-size: 72pt;
-    border: 1px solid white;
+    border: 1px solid black;
     border-radius: 50%;
 }
 

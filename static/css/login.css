@@ -1,6 +1,7 @@
 body,
 html {
-    background-color: #282E34;
+    background: url("../white_background.jpg") center center fixed no-repeat;
+    background-size: cover;
     height: 100%;
     width: 100%;
 }
@@ -11,14 +12,13 @@ html {
 }
 
 .intro-container {
-    color: white;
+    color: black;
 }
 
 .container-row {
     padding-top: 40px;
-	padding-bottom: 40px;
+    padding-bottom: 40px;
 }
-
 
 .intro {
     font-family: 'Pacifico', cursive;
@@ -30,7 +30,7 @@ html {
     max-width: 320px;
     background: whitesmoke;
     border-radius: 20px;
-    box-shadow: 20px 20px 20px;
+    box-shadow: 20px 20px 30px;
 }
 
 .login-form {
@@ -61,6 +61,6 @@ html {
     .intro {
         font-size: 40pt;
         font-family: 'Pacifico', cursive;
-		letter-spacing: 0px;
+        letter-spacing: 0px;
     }
 }
