@@ -15,7 +15,6 @@ def ProductView(request, product_search):
     smartphones = Smartphone.objects.get(name=product_search)
     smartphones_comments = Rated.objects.filter(product=smartphones, has_written=True)
     if not user.is_authenticated:
-        print("no user")
         return render(request, 'product.html', {'smartphones': smartphones, 'comments': smartphones_comments})
     
     rated = Rated()
@@ -27,7 +26,6 @@ def ProductView(request, product_search):
 
     if 'people-hiddenfield' in request.POST:
             user_search = request.POST.get('people-search')
-            print(user_search)
             return redirect(reverse('profile:users', args=(user_search,)))
 
     if request.method == 'POST' and 'comments-hiddenfield' in request.POST:
@@ -48,13 +46,11 @@ def ProductView(request, product_search):
 
 
                     if '2' in choices:
-                        print("not recomend is checked")
                         smartphones.not_recommend += 1
                         rated_item.not_recommend = 1
 
 
                     if '3' in choices:
-                        print("recomend is checked")
                         smartphones.issues_with_the_product = smartphones.issues_with_the_product + 1
                         rated_item.issues_with_the_product = 1
 
@@ -121,13 +117,11 @@ def ProductView(request, product_search):
 
 
                 if '2' in choices:
-                    print("not recomend is checked")
                     smartphones.not_recommend += 1
                     rated_item.not_recommend = 1
 
 
                 if '3' in choices:
-                    print("recomend is checked")
                     smartphones.issues_with_the_product = smartphones.issues_with_the_product + 1
                     rated_item.issues_with_the_product = 1
 
@@ -202,7 +196,6 @@ def ProductsView(request, product_search):
 
     if 'people-hiddenfield' in request.POST:
             user_search = request.POST.get('people-search')
-            print(user_search)
             return redirect(reverse('profile:users', args=(user_search,)))
 
     if 'product-hidden' in request.POST:           
@@ -230,9 +223,7 @@ def ProductsView(request, product_search):
         return render(request, 'products.html', {'smartphone_brand': other_products, 'not_found_error': not_found_error, 'product_company': product_company})
 
     else:
-        print
         product_company = product_search.split(' ')[0]
-        print(product_company)
         other_products = (Smartphone.objects.filter(name__startswith = product_company).exclude(name__exact = product_search))
 
         all_product_list = list(chain(smartphone_brand, other_products))
